@@ -137,7 +137,9 @@ a.dropdown-item:hover{
 .pfour{
     color:#30a3d5 !important;
     font-size:153%;
-    text-shadow: 2px 2px 17px rgba(150, 150, 150, 1);
+    background-color: white;
+    border: 3px solid #30a3d5;
+    text-shadow: 1px 1px 1px rgb(89, 89, 89);
 }
 
 .footer{
@@ -157,4 +159,5 @@ a.dropdown-item:hover{
 .socialpic{
     width: 60px;
     height: 60px;
+
 }
