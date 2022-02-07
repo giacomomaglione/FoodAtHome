@@ -122,3 +122,8 @@ a.dropdown-item:hover{
 .titolo{
     color:#30a3d5 !important;
 }
+
+.footer{
+    background-color: #77838d;
+    color:white !important;
+}
