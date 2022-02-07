@@ -78,7 +78,7 @@
                     <div class="it-datepicker-wrapper">
                         <div class="form-group">
                             <label for="Date" class="form-label fw-bold ">Data di nascita</label>
-                            <input class="form-control it-date-datepicker" id="date1" type="text" placeholder="inserisci la data in formato gg/mm/aaaa" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}">
+                            <input class="form-control it-date-datepicker" id="date" type="text" placeholder="inserisci la data in formato gg/mm/aaaa" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}">
 
                         </div>
                     </div>
@@ -124,8 +124,19 @@
                     </div>
                 </div>
 
+                <script>
+                    function signinControl() {
+                        var nome = document.getElementById("Name").value
+                        var cognome = document.getElementById("Surname").value
+                        var indirizzo = document.getElementById("Address").value
+                        var data = document.getElementById("date").value
+                        var sesso = document.getElementById("Gender").value
+                        if(nome == 0)
+                            alert("Il campo nome è vuoto")
+                    }
+                </script>
+                <button onclick="signinControl()" type="submit" class="btn btn-primary fw-bold my-3">Registrati</button>
 
-                <button type="submit" class="btn btn-primary fw-bold my-3">Registrati</button>
             </form>
         </div>
         <div class="col-3">
