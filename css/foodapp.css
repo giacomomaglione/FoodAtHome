@@ -183,3 +183,10 @@ a.dropdown-item:hover{
     font-size:51px;
 
 }
+
+
+.buttonsearch{
+    background-color: #30a3d5;
+    color: white;
+    border-color: #30a3d5;
+}
