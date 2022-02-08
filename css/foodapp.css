@@ -71,7 +71,7 @@ a.dropdown-item:hover{
     display:fleX;
     position: relative;
     width: 100%;
-
+    max-width: 100%;
 }
 
 .access{
@@ -160,4 +160,10 @@ a.dropdown-item:hover{
     width: 60px;
     height: 60px;
 
+}
+
+@media (max-width: 576){
+    .hiddensmall{
+        display:none;
+    }
 }
