@@ -2,9 +2,9 @@
 
 function signinLocalControl() {
     var nome = document.getElementById("Name").value
-    if(nome == "")
+    if(nome == ""){
         alert(" il campo 'Nome' è vuoto")
-    var cognome = document.getElementById("Surname").value;
+    var cognome = document.getElementById("Surname").value
     if(cognome == "")
         alert(" il campo 'Cognome' è vuoto")
     var indirizzo = document.getElementById("Address").value
@@ -12,7 +12,7 @@ function signinLocalControl() {
         alert(" il campo 'Indirizzo' è vuoto")
     var data = document.getElementById("date").value
     if(data == "")
-        alert(" il campo 'data' è vuoto ")
+        alert(" il campo 'Data' è vuoto ")
     var telefono = document.getElementById("telephone").value
     if(telefono == "")
         alert(" il campo 'Numero di cellulare' è vuoto")
@@ -67,7 +67,7 @@ function signinClientControl() {
         alert(" il campo 'Indirizzo' è vuoto")
     var data = document.getElementById("date").value
     if(data == "")
-        alert(" il campo 'data' è vuoto ")
+        alert(" il campo 'Data' è vuoto ")
     var telefono = document.getElementById("telephone").value
     if(telefono == "")
         alert(" il campo 'Numero di cellulare' è vuoto")
@@ -98,7 +98,7 @@ function signinRiderControl() {
         alert(" il campo 'Indirizzo' è vuoto")
     var data = document.getElementById("date").value
     if(data == "")
-        alert(" il campo 'data' è vuoto ")
+        alert(" il campo 'Data' è vuoto ")
     var telefono = document.getElementById("telephone").value
     if(telefono == "")
         alert(" il campo 'Numero di cellulare' è vuoto")
