@@ -189,4 +189,5 @@ a.dropdown-item:hover{
     background-color: #30a3d5;
     color: white;
     border-color: #30a3d5;
+    margin: 0px !important;
 }
