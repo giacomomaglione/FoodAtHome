@@ -10,6 +10,9 @@ function signinLocalControl() {
     var indirizzo = document.getElementById("Address").value
     if(indirizzo == "")
         alert(" il campo 'Indirizzo' è vuoto")
+    var data = document.getElementById("date").value
+    if(data == "")
+        alert(" il campo 'data' è vuoto ")
     var telefono = document.getElementById("telephone").value
     if(telefono == "")
         alert(" il campo 'Numero di cellulare' è vuoto")
@@ -62,6 +65,9 @@ function signinClientControl() {
     var indirizzo = document.getElementById("Address").value
     if(indirizzo == "")
         alert(" il campo 'Indirizzo' è vuoto")
+    var data = document.getElementById("date").value
+    if(data == "")
+        alert(" il campo 'data' è vuoto ")
     var telefono = document.getElementById("telephone").value
     if(telefono == "")
         alert(" il campo 'Numero di cellulare' è vuoto")
@@ -90,6 +96,9 @@ function signinRiderControl() {
     var indirizzo = document.getElementById("Address").value
     if(indirizzo == "")
         alert(" il campo 'Indirizzo' è vuoto")
+    var data = document.getElementById("date").value
+    if(data == "")
+        alert(" il campo 'data' è vuoto ")
     var telefono = document.getElementById("telephone").value
     if(telefono == "")
         alert(" il campo 'Numero di cellulare' è vuoto")
