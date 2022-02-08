@@ -1,8 +1,20 @@
 
 
+function upperCase() {
+    const f = document.getElementById("fiscalcode");
+    f.value = f.value.toUpperCase();
+    const d = document.getElementById("document");
+    d.value = d.value.toUpperCase();
+    const ib = document.getElementById("iban");
+    ib.value = ib.value.toUpperCase();
+    const iv = document.getElementById("iva");
+    iv.value = iv.value.toUpperCase();
+}
+
+
 function signinLocalControl() {
     var nome = document.getElementById("Name").value
-    if(nome == ""){
+    if(nome == "")
         alert(" il campo 'Nome' è vuoto")
     var cognome = document.getElementById("Surname").value
     if(cognome == "")
@@ -19,10 +31,6 @@ function signinLocalControl() {
     var fiscale = document.getElementById("fiscalcode").value
     if(fiscale == "")
         alert(" il campo 'Codice fiscale' è vuoto")
-        else
-        if (fiscale != fiscale.toUpperCase()){
-            fiscale = fiscale.toUpperCase();
-        }
     var documento = document.getElementById("document").value
     if(documento == "")
         alert(" il campo 'Documento' è vuoto")
@@ -74,10 +82,6 @@ function signinClientControl() {
     var fiscale = document.getElementById("fiscalcode").value
     if(fiscale == "")
         alert(" il campo 'Codice fiscale' è vuoto")
-        else
-        if (fiscale != fiscale.toUpperCase()){
-            fiscale = fiscale.toUpperCase();
-        }
     var email = document.getElementById("email").value
     if(email == "")
         alert(" il campo 'Email' è vuoto")
@@ -105,10 +109,6 @@ function signinRiderControl() {
     var fiscale = document.getElementById("fiscalcode").value
     if(fiscale == "")
         alert(" il campo 'Codice fiscale' è vuoto")
-        else
-        if (fiscale != fiscale.toUpperCase()){
-            fiscale = fiscale.toUpperCase();
-        }
     var documento = document.getElementById("document").value
     if(documento == "")
         alert(" il campo 'Documento' è vuoto")

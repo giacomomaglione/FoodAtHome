@@ -114,22 +114,22 @@
                     <div class="mb-3 my-3">
                         <label for="fiscalcode" class="form-label fw-bold">CodiceFiscale</label>
                         <br>
-                        <input type="fiscalcode" class="form-control" id="fiscalcode" pattern="[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}" placeholder="Inserisci il tuo codice fiscale">
+                        <input type="fiscalcode" class="form-control" id="fiscalcode" onchange="upperCase()" pattern="[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}" placeholder="Inserisci il tuo codice fiscale">
                     </div>
                     <div class="mb-3 my-3">
                         <label for="document" class="form-label fw-bold">Documento</label>
                         <br>
-                        <input type="document" class="form-control" id="document" pattern="[A-Z]{2}[0-9]{5}[A-Z]{2}" placeholder="Inserisci il numero della tua carta di identità">
+                        <input type="document" class="form-control" id="document" onchange="upperCase()" pattern="[A-Z]{2}[0-9]{5}[A-Z]{2}" placeholder="Inserisci il numero della tua carta di identità">
                     </div>
                     <div class="mb-3 my-3">
                         <label for="iban" class="form-label fw-bold">IBAN</label>
                         <br>
-                        <input type="iban" class="form-control" id="iban" pattern="[A-Z]{2}[0-9]{2}[A-Z]{1}[0-9]{22}" placeholder="Inserisci il tuo IBAN">
+                        <input type="iban" class="form-control" id="iban" onchange="upperCase()" pattern="[A-Z]{2}[0-9]{2}[A-Z]{1}[0-9]{22}" placeholder="Inserisci il tuo IBAN">
                     </div>
                     <div class="mb-3 my-3">
                         <label for="iban" class="form-label fw-bold">Partita IVA</label>
                         <br>
-                        <input type="iva" class="form-control" id="iva" pattern="[A-Z]{2}[0-9]{11}" placeholder="Inserisci la tua partita iva">
+                        <input type="iva" class="form-control" id="iva" onchange="upperCase()" pattern="[A-Z]{2}[0-9]{11}" placeholder="Inserisci la tua partita iva">
                     </div>
                     <div class="mb-3 my-3">
                         <label for="InputLocalName" class="form-label fw-bold ">Nome del locale</label>
