@@ -106,6 +106,7 @@ a.dropdown-item:hover{
     width: 430px;
     height:430px;
     border: 8px solid #30a3d5;
+
 }
 
 .local{
@@ -162,8 +163,15 @@ a.dropdown-item:hover{
 
 }
 
-@media (max-width: 576){
+@media (max-width: 576px){
     .hiddensmall{
         display:none;
     }
+
+}
+@media (max-width: 768px){
+    .hiddenmedium{
+        display:none;
+    }
+
 }
