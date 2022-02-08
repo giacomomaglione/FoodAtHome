@@ -44,7 +44,6 @@ a.dropdown-item:hover{
     font-weight: bold !important;
 }
 .pone{
-    /*background-color: #30a3d5b5 !important;*/
     background-color: #30a3d5 !important;
     color:white !important;
     box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.63);
@@ -53,10 +52,6 @@ a.dropdown-item:hover{
 
 }
 
-/*.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand {
-    color:red;
-}
-*/
 
 
 .formlog{
@@ -146,7 +141,9 @@ a.dropdown-item:hover{
 .footer{
     background-color: #77838d;
 }
+.footer {
 
+}
 .pfooter{
     color:white !important;
     letter-spacing: 1px;
@@ -173,5 +170,15 @@ a.dropdown-item:hover{
     .hiddenmedium{
         display:none;
     }
+
+}
+
+.pfive{
+    background-color: #30a3d5 !important;
+    color:white !important;
+    box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.63);
+    -webkit-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.63);
+    -moz-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.63);
+    font-size:51px;
 
 }
