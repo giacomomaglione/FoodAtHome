@@ -1,7 +1,11 @@
 from flask import Blueprint, request, flash, render_template
+from pymongo import MongoClient
 
 auth = Blueprint('auth', __name__)
 
+connessione = MongoClient("mongodb://localhost:27017/")
+database = connessione["foodathome"]
+cliente = database["Customer"]
 
 @auth.route("/login", methods=['GET', 'POST'])
 def login():
@@ -13,7 +17,9 @@ def signin():
     if request.method == 'POST':
         name = request.form.get('Name')
         surname = request.form.get('Surname')
-        address = request.form.get('Address')
+        street = request.form.get('Street')
+        city = request.form.get('City')
+        province = request.form.get('Province')
         date = request.form.get('Date')
         gender = request.form.get('Gender')
         telephone = request.form.get('Telephone')
@@ -21,7 +27,8 @@ def signin():
         email = request.form.get('Email')
         password = request.form.get('Password')
         flash('Account creato!', category="success")
-
+        account = {"Name": name}
+        cliente.insert_one(account)
     return render_template('signin.html')
 
 
@@ -30,7 +37,9 @@ def signinlocal():
     if request.method == 'POST':
         name = request.form.get('Name')
         surname = request.form.get('Surname')
-        address = request.form.get('Address')
+        street = request.form.get('Street')
+        city = request.form.get('City')
+        province = request.form.get('Province')
         date = request.form.get('Date')
         gender = request.form.get('Gender')
         telephone = request.form.get('Telephone')
@@ -50,7 +59,9 @@ def signinrider():
     if request.method == 'POST':
         name = request.form.get('Name')
         surname = request.form.get('Surname')
-        address = request.form.get('Address')
+        street = request.form.get('Street')
+        city = request.form.get('City')
+        province = request.form.get('Province')
         date = request.form.get('Date')
         gender = request.form.get('Gender')
         telephone = request.form.get('Telephone')
