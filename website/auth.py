@@ -35,10 +35,10 @@ def signin():
             flash("Il nome deve essere di almeno 3 caratteri!", category="error")
         elif len(password)<7:
             flash("La password deve essere di almeno 7 caratteri!", category="error")
-        elif
+        else :
             flash('Account creato!', category="success")
 
-        account = {"Name": name, "Surname": , "Street": "Via Milano, 32", "City": "Napoli", "Province": "Napoli", "Birthday": "07/02/2000", "Gender": "M", "PhoneNumber": 3334567890, "TaxCode": "RSSMRA00B07F839U", "Email": "mario.rossi@alice.it", "Password": "Mario00R"}
+        account = {"Name": name, "Surname": surname, "Street": street, "City": city, "Province": province, "Birthday": date , "Gender": gender, "PhoneNumber": telephone, "TaxCode": taxcode, "Email": email, "Password": password}
         cliente.insert_one(account)
 
     return render_template('signin.html')
@@ -69,10 +69,10 @@ def signinlocal():
             flash("Il nome deve essere di almeno 3 caratteri!", category="error")
         elif len(password)<7:
             flash("La password deve essere di almeno 7 caratteri!", category="error")
-        elif
+        else :
             flash('Account creato!', category="success")
 
-        account = {"Name": name}
+        account = {"Name": name, "Surname": surname, "Street": street, "City": city, "Province": province, "Birthday": date , "Gender": gender, "PhoneNumber": telephone, "TaxCode": taxcode, "ID": document, "IBAN": iban, "IVA": iva, "LocalName": localname, "Email": email, "Password": password}
         negozio.insert_one(account)
 
     return render_template('signinlocal.html')
@@ -101,10 +101,10 @@ def signinrider():
             flash("Il nome deve essere di almeno 3 caratteri!", category="error")
         elif len(password)<7:
             flash("La password deve essere di almeno 7 caratteri!", category="error")
-        elif
+        else :
             flash('Account creato!', category="success")
 
-        account = {"Name": name}
+        account = {"Name": name, "Surname": surname, "Street": street, "City": city, "Province": province, "Birthday": date , "Gender": gender, "PhoneNumber": telephone, "TaxCode": taxcode, "ID": document, "IBAN": iban, "Email": email, "Password": password}
         rider.insert_one(account)
 
     return render_template('signinrider.html')
