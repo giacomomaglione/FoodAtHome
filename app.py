@@ -3,9 +3,8 @@ from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
-
-
 bootstrap = Bootstrap(app)
+
 
 @app.route("/")
 def index():
@@ -17,21 +16,21 @@ def about():
     return render_template('aboutus.html')
 
 
-@app.route("/login", methods=['GET','POST'])
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     return render_template('login.html', boolean=True)
 
 
-@app.route("/signin", methods=['GET','POST'])
+@app.route("/signin", methods=['GET', 'POST'])
 def signin():
     if request.method == 'POST':
-        name= request.form.get('Name')
+        name = request.form.get('Name')
         surname = request.form.get('Surname')
         address = request.form.get('Address')
         date = request.form.get('Date')
         gender = request.form.get('Gender')
         telephone = request.form.get('Telephone')
-        taxcode= request.form.get('Taxcode')
+        taxcode = request.form.get('Taxcode')
         email = request.form.get('Email')
         password = request.form.get('Password')
         flash('Account creato!', category="success")
@@ -39,16 +38,16 @@ def signin():
     return render_template('signin.html')
 
 
-@app.route("/signinlocal", methods=['GET','POST'])
+@app.route("/signinlocal", methods=['GET', 'POST'])
 def signinlocal():
     if request.method == 'POST':
-        name= request.form.get('Name')
+        name = request.form.get('Name')
         surname = request.form.get('Surname')
         address = request.form.get('Address')
         date = request.form.get('Date')
         gender = request.form.get('Gender')
         telephone = request.form.get('Telephone')
-        taxcode= request.form.get('Taxcode')
+        taxcode = request.form.get('Taxcode')
         document = request.form.get('Document')
         iban = request.form.get('Iban')
         iva = request.form.get('Iva')
@@ -56,11 +55,10 @@ def signinlocal():
         email = request.form.get('Email')
         password = request.form.get('Password')
 
-
     return render_template('signinlocal.html')
 
 
-@app.route("/signinrider", methods=['GET','POST'])
+@app.route("/signinrider", methods=['GET', 'POST'])
 def signinrider():
     if request.method == 'POST':
         name = request.form.get('Name')
@@ -74,7 +72,6 @@ def signinrider():
         iban = request.form.get('Iban')
         email = request.form.get('Email')
         password = request.form.get('Password')
-
 
     return render_template('signinrider.html')
 
