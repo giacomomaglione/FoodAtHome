@@ -1,0 +1,54 @@
+{% extends "Template.html" %}
+{% block title %} <title>Accedi</title>{% endblock %}
+{% block content %}
+{{ super() }}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h2 class="titolo fw-bold">Accedi</h2>
+        </div>
+        <div class="col-4"></div>
+
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12"><br>
+        </div>
+    </div>
+</div>
+<div class="container formlog my-3 ">
+
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6">
+            <form >
+                <div class="mb-3 my-3">
+                    <label for="InputEmail1" class="form-label fw-bold ">Indirizzo email</label>
+                    <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="InputPassword1" class="form-label fw-bold">Password</label>
+                    <input type="password" class="form-control" id="InputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input fw-bold" id="Check1">
+                    <label class="form-check-label" for="Check1">Ricordami</label>
+                </div>
+                <button type="submit" class="btn btn-primary fw-bold my-3">Accedi</button>
+            </form>
+        </div>
+        <div class="col-3">
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

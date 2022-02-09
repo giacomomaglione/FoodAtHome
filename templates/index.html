@@ -1,0 +1,104 @@
+{% extends "Template.html" %}
+
+{% block content %}
+<div class="container-fluid pone mx-auto my-5">
+    <div class="row">
+        <div class="col-md-3 col-lg-3"></div>
+        <div class="col-md-5 col-lg-5">
+            <br>
+            <br>
+            <br>
+            <br>
+            <p class="fs-3 fw-bold">Benvenuto! <a class="access" href="login"> Accedi</a> o <a class="access"
+                                                                                                    href="signin">registrati</a>
+                per ordinare</p>
+        </div>
+        <div class="col-md-4 col-lg-4">
+            <img class="hamburger1" src="../static/img/Hamburger.png"> </img>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="container-fluid ptwo mx-auto my-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <br>
+            <br>
+            <p class="text-center fs-3 fw-bold">I migliori ristoranti, a casa tua</p>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+</div>
+<div class="container mx-auto my-3">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 col-lg-1">
+            <img class="sponsor" src="../static/img/450.png"> </img>
+        </div>
+        <div class="col-sm-3 col-md-2 col-lg-1">
+
+        </div>
+        <div class="col-sm-3 col-md-2 col-lg-1">
+            <img class="sponsor" src="../static/img/bk.png"> </img>
+        </div>
+        <div class="col-sm-3 col-md-2 col-lg-1">
+
+        </div>
+        <div class="col-sm-3 col-md-2 col-lg-1">
+            <img class="sponsor" src="../static/img/giappo.png"> </img>
+        </div>
+        <div class="col-sm-3 col-md-2 col-lg-1">
+
+        </div>
+        <div class="col-sm-3 col-md-2  col-lg-1">
+            <img class="sponsor" src="../static/img/oww.png"> </img>
+        </div>
+        <div class="col-sm-3 col-md-2  col-lg-1">
+
+        </div>
+        <div class="col-sm-3 col-md-2  col-lg-1">
+            <img class="sponsor" src="../static/img/kfc.png"> </img>
+        </div>
+        <div class="col-sm-3 col-md-2  col-lg-1">
+
+        </div>
+        <div class="col-sm-3 col-md-2  col-lg-1">
+            <img class="sponsor" src="../static/img/mc.png"> </img>
+        </div>
+        <div class="col-sm-3 col-md-2  col-lg-1">
+
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
+
+
+<!--Rider o Attività-->
+<div class="container mx-auto my-5">
+    <div class="row ">
+        <div class="col-md-12 col-sm-12 col-lg-4">
+            <p class="ptwo text-center fs-3 fw-bold">Vuoi diventare un rider?</p><br>
+            <a href="{{url_for('signinrider')}}">
+                <img class="rider" src="../static/img/rider.png"> </img>
+            </a><br>
+            <p class="pthree text-center fs-3 fw-bold">Proponiti per diventare rider!</p><br>
+        </div>
+
+        <div class="hiddensmall hiddenmedium col-lg-4"></div>
+
+        <div class="col-md-12 col-sm-12 col-lg-4">
+            <p class="ptwo text-center fs-3 fw-bold">Hai un'attività ?</p><br>
+            <a href="{{url_for('signinlocal')}}">
+                <img class="local" src="../static/img/local.png"> </img>
+            </a><br>
+            <p class="pthree text-center fs-3 fw-bold">Non preoccuparti per la consegna, ci pensiamo noi!</p><br>
+        </div>
+    </div>
+</div>
+{% endblock %}

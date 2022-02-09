@@ -71,14 +71,14 @@ a.dropdown-item:hover{
 
 .access{
     color:white !important;
-    text-decoration: none;
+    /*text-decoration: none;*/
 
 }
 
 .access:hover {
     color:white !important;
-    text-decoration: none;
-    text-shadow: 4px 4px 2px rgb(92, 91, 91) !important;
+    /*text-decoration: none;*/
+    /*text-shadow: 4px 4px 2px rgb(92, 91, 91) !important;*/
 }
 
 .ptwo{
