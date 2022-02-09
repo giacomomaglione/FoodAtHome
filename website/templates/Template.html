@@ -15,7 +15,7 @@
     <nav class="navbar-bg navbarhover navbar-custom padding-left navbar navbar-expand-lg navbar-light text-center">
         <div class="container-fluid">
             <div class="col-md-3 text-center">
-                <a class="navbar-brand mx-auto" href="{{url_for('index')}}"><img width="100px" height="100px" src="{{ url_for('static', filename = 'img/logo5.png') }}"> Food@Home </img> </a>
+                <a class="navbar-brand mx-auto" href="{{url_for('views.index')}}"><img width="100px" height="100px" src="{{ url_for('static', filename = 'img/logo5.png') }}"> Food@Home </img> </a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,23 +23,23 @@
             <div class="collapse navbar-collapse col-md-6" id="navbarNavDropdown">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item text-center">
-                        <a class="nav-link active " aria-current="page" href="{{url_for('index')}}">Home</a>
+                        <a class="nav-link active " aria-current="page" href="{{url_for('views.index')}}">Home</a>
                     </li>
                     <li class="nav-item dropdown text-center">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Lavora con noi
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{url_for('signinrider')}}">Diventa un rider!</a></li>
-                            <li><a class="dropdown-item" href="{{url_for('signinlocal')}}">Aggiungi il tuo negozio</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('auth.signinrider')}}">Diventa un rider!</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('auth.signinlocal')}}">Aggiungi il tuo negozio</a></li>
 
                         </ul>
                     </li>
                     <li class="nav-item text-center">
-                        <a class="nav-link" href="{{url_for('about')}}">Chi siamo</a>
+                        <a class="nav-link" href="{{url_for('views.about')}}">Chi siamo</a>
                     </li>
                     <li class="nav-item text-center">
-                        <a class="nav-link" href="{{url_for('login')}}">Accedi</a>
+                        <a class="nav-link" href="{{url_for('auth.login')}}">Accedi</a>
                     </li>
                 </ul>
             </div>
@@ -68,14 +68,14 @@
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-2">
-            <a href="{{url_for('index')}}" class="pfooter fw-bold"><p>Food@Home</p></a>
-            <a href="{{url_for('about')}}" class="pfooter"><p>Chi siamo</p></a>
+            <a href="{{url_for('views.index')}}" class="pfooter fw-bold"><p>Food@Home</p></a>
+            <a href="{{url_for('views.about')}}" class="pfooter"><p>Chi siamo</p></a>
         </div>
         <div class="col-sm-1"></div>
         <div class="col-sm-2">
             <a href="#" class="pfooter fw-bold"><p>Lavora con noi</p></a>
-            <a href="{{url_for('signinrider')}}" class="pfooter"><p>Diventa un rider</p></a>
-            <a href="{{url_for('signinlocal')}}" class="pfooter"><p>Hai un'attività?</p></a>
+            <a href="{{url_for('auth.signinrider')}}" class="pfooter"><p>Diventa un rider</p></a>
+            <a href="{{url_for('auth.signinlocal')}}" class="pfooter"><p>Hai un'attività?</p></a>
         </div>
         <div class="col-sm-1"></div>
         <div class="col-sm-2">
