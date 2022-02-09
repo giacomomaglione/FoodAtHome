@@ -35,7 +35,5 @@ def signinrider():
     return render_template('signinrider.html')
 
 
-
-
 if __name__ == "__main__":
     app.run()
