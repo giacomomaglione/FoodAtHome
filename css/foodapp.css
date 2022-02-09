@@ -191,3 +191,14 @@ a.dropdown-item:hover{
     border-color: #30a3d5;
     margin: 0px !important;
 }
+
+.psix{
+    background-color: #30a3d5 !important;
+    color:white !important;
+    box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.63);
+    -webkit-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.63);
+    -moz-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.63);
+    font-size:35px;
+
+}
+
