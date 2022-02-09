@@ -3,9 +3,11 @@ from pymongo import MongoClient
 
 auth = Blueprint('auth', __name__)
 
-connessione = MongoClient("mongodb://localhost:27017/")
+connessione = MongoClient("mongodb+srv://foodathome:UniParthenope@cluster0.fkbq2.mongodb.net/test")
 database = connessione["foodathome"]
 cliente = database["Customer"]
+rider = database["Rider"]
+negozio = database["Store"]
 
 @auth.route("/login", methods=['GET', 'POST'])
 def login():
@@ -26,9 +28,19 @@ def signin():
         taxcode = request.form.get('Taxcode')
         email = request.form.get('Email')
         password = request.form.get('Password')
-        flash('Account creato!', category="success")
-        account = {"Name": name}
+
+        if len(email)<4:
+            flash("L'email deve essere di almeno 4 caratteri!", category="error")
+        elif len(name)<3:
+            flash("Il nome deve essere di almeno 3 caratteri!", category="error")
+        elif len(password)<7:
+            flash("La password deve essere di almeno 7 caratteri!", category="error")
+        else :
+            flash('Account creato!', category="success")
+
+        account = {"Name": name, "Surname": surname, "Street": street, "City": city, "Province": province, "Birthday": date , "Gender": gender, "PhoneNumber": telephone, "TaxCode": taxcode, "Email": email, "Password": password}
         cliente.insert_one(account)
+
     return render_template('signin.html')
 
 
@@ -51,6 +63,18 @@ def signinlocal():
         email = request.form.get('Email')
         password = request.form.get('Password')
 
+        if len(email)<4:
+            flash("L'email deve essere di almeno 4 caratteri!", category="error")
+        elif len(name)<3:
+            flash("Il nome deve essere di almeno 3 caratteri!", category="error")
+        elif len(password)<7:
+            flash("La password deve essere di almeno 7 caratteri!", category="error")
+        else :
+            flash('Account creato!', category="success")
+
+        account = {"Name": name, "Surname": surname, "Street": street, "City": city, "Province": province, "Birthday": date , "Gender": gender, "PhoneNumber": telephone, "TaxCode": taxcode, "ID": document, "IBAN": iban, "IVA": iva, "LocalName": localname, "Email": email, "Password": password}
+        negozio.insert_one(account)
+
     return render_template('signinlocal.html')
 
 
@@ -70,5 +94,17 @@ def signinrider():
         iban = request.form.get('Iban')
         email = request.form.get('Email')
         password = request.form.get('Password')
+
+        if len(email)<4:
+            flash("L'email deve essere di almeno 4 caratteri!", category="error")
+        elif len(name)<3:
+            flash("Il nome deve essere di almeno 3 caratteri!", category="error")
+        elif len(password)<7:
+            flash("La password deve essere di almeno 7 caratteri!", category="error")
+        else :
+            flash('Account creato!', category="success")
+
+        account = {"Name": name, "Surname": surname, "Street": street, "City": city, "Province": province, "Birthday": date , "Gender": gender, "PhoneNumber": telephone, "TaxCode": taxcode, "ID": document, "IBAN": iban, "Email": email, "Password": password}
+        rider.insert_one(account)
 
     return render_template('signinrider.html')
