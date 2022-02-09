@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 auth = Blueprint('auth', __name__)
 
-connessione = MongoClient("mongodb://localhost:27017/")
+connessione = MongoClient("mongodb+srv://foodathome:UniParthenope@cluster0.fkbq2.mongodb.net/test")
 database = connessione["foodathome"]
 cliente = database["Customer"]
 rider = database["Rider"]
@@ -38,7 +38,7 @@ def signin():
         elif
             flash('Account creato!', category="success")
 
-        account = {"Name": name, "Surname": "Rossi", "Street": "Via Milano, 32", "City": "Napoli", "Province": "Napoli", "Birthday": "07/02/2000", "Gender": "M", "PhoneNumber": 3334567890, "TaxCode": "RSSMRA00B07F839U", "Email": "mario.rossi@alice.it", "Password": "Mario00R"}
+        account = {"Name": name, "Surname": , "Street": "Via Milano, 32", "City": "Napoli", "Province": "Napoli", "Birthday": "07/02/2000", "Gender": "M", "PhoneNumber": 3334567890, "TaxCode": "RSSMRA00B07F839U", "Email": "mario.rossi@alice.it", "Password": "Mario00R"}
         cliente.insert_one(account)
 
     return render_template('signin.html')
