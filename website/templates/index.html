@@ -9,8 +9,8 @@
             <br>
             <br>
             <br>
-            <p class="fs-3 fw-bold">Benvenuto! <a class="access" href="login"> Accedi</a> o <a class="access"
-                                                                                                    href="signin">registrati</a>
+            <p class="fs-3 fw-bold">Benvenuto! <a class="access" href="{{url_for('auth.login')}}"> Accedi</a> o <a class="access"
+                                                                                                    href="{{url_for('auth.signin')}}">registrati</a>
                 per ordinare</p>
         </div>
         <div class="col-md-4 col-lg-4">
@@ -84,7 +84,7 @@
     <div class="row ">
         <div class="col-md-12 col-sm-12 col-lg-4">
             <p class="ptwo text-center fs-3 fw-bold">Vuoi diventare un rider?</p><br>
-            <a href="{{url_for('signinrider')}}">
+            <a href="{{url_for('auth.signinrider')}}">
                 <img class="rider" src="../static/img/rider.png"> </img>
             </a><br>
             <p class="pthree text-center fs-3 fw-bold">Proponiti per diventare rider!</p><br>
@@ -94,7 +94,7 @@
 
         <div class="col-md-12 col-sm-12 col-lg-4">
             <p class="ptwo text-center fs-3 fw-bold">Hai un'attività ?</p><br>
-            <a href="{{url_for('signinlocal')}}">
+            <a href="{{url_for('auth.signinlocal')}}">
                 <img class="local" src="../static/img/local.png"> </img>
             </a><br>
             <p class="pthree text-center fs-3 fw-bold">Non preoccuparti per la consegna, ci pensiamo noi!</p><br>
