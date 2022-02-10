@@ -1,10 +1,12 @@
-from flask import Blueprint, request, flash, render_template
+from flask import Blueprint, request, flash, render_template, redirect, url_for
 from pymongo import MongoClient
 import certifi
+from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
-connessione = MongoClient("mongodb+srv://foodathome:UniParthenope@cluster0.fkbq2.mongodb.net/test", tlsCAFile=certifi.where())
+connessione = MongoClient("mongodb+srv://foodathome:UniParthenope@cluster0.fkbq2.mongodb.net/test",
+                          tlsCAFile=certifi.where())
 database = connessione["foodathome"]
 cliente = database["Customer"]
 rider = database["Rider"]
@@ -25,10 +27,63 @@ def login():
             if user["Email"] == email:
                 if user["Password"] == password:
                     flash('Accesso eseguito', category="success")
+                    login_user(user, remember=True)
+                    return redirect(url_for('views.clentindex'))
                 else:
                     flash('Password incorretta', category="error")
 
     return render_template('login.html', boolean=True)
+
+
+@auth.route("/loginrider", methods=['GET', 'POST'])
+def loginrider():
+    if request.method == 'POST':
+        email = request.form.get('Email')
+        password = request.form.get('Password')
+
+        user = rider.find_one({"Email": email})
+
+        if user is None:
+            flash('Email non registrata', category="error")
+        else:
+            if user["Email"] == email:
+                if user["Password"] == password:
+                    flash('Accesso eseguito', category="success")
+                    login_user(user, remember=True)
+                    return redirect(url_for('views.riderindex'))
+                else:
+                    flash('Password incorretta', category="error")
+
+    return render_template('login.html', boolean=True)
+
+
+@auth.route("/loginshop", methods=['GET', 'POST'])
+def loginshop():
+    if request.method == 'POST':
+        email = request.form.get('Email')
+        password = request.form.get('Password')
+
+        user = negozio.find_one({"Email": email})
+
+        if user is None:
+            flash('Email non registrata', category="error")
+        else:
+            if user["Email"] == email:
+                if user["Password"] == password:
+                    flash('Accesso eseguito', category="success")
+                    login_user(user, remember=True)
+                    return redirect(url_for('views.localindex'))
+                else:
+                    flash('Password incorretta', category="error")
+
+    return render_template('login.html', boolean=True)
+
+
+@auth.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('views.index'))
 
 
 @auth.route("/signin", methods=['GET', 'POST'])
@@ -47,7 +102,6 @@ def signin():
         password = request.form.get('Password')
 
         user = cliente.find_one({"Email": email})
-
 
         if user is None:
             if len(email) < 3:
