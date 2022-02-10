@@ -1,0 +1,57 @@
+{% extends "Template.html" %}
+{% block title %} <title>Accedi</title>{% endblock %}
+{% block content %}
+{{ super() }}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h2 class="titolo fw-bold">Accedi</h2>
+        </div>
+        <div class="col-4"></div>
+
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12"><br>
+        </div>
+    </div>
+</div>
+<div class="container formlog my-3 ">
+
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6">
+            <form method="POST">
+                <div class="mb-3 my-3 form-group">
+                    <label class="form-label fw-bold ">Indirizzo email</label>
+                    <input type="email" class="form-control" id="Email" name="Email" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3 form-group">
+                    <label class="form-label fw-bold">Password</label>
+                    <input type="password" class="form-control" id="Password" name="Password">
+                </div>
+                <div class="mb-3 form-check form-group">
+                    <input type="checkbox" class="form-check-input fw-bold" id="Check1">
+                    <label class="form-check-label" for="Check1">Ricordami</label>
+                </div>
+               <!--- <p class="fw-bold"> Sei un rider? <a href="{{url_for('auth.loginrider')}}"> Clicca qui </p></a>
+                <p class="fw-bold"> Sei un cliente? <a href="{{url_for('auth.loginshop')}}"> Clicca qui </p></a> --->
+
+                <button type="submit" class="btn btn-primary fw-bold my-3">Accedi</button>
+            </form>
+        </div>
+        <div class="col-3">
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
