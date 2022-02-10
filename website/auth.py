@@ -16,14 +16,14 @@ def login():
         email = request.form.get('Email')
         password = request.form.get('Password')
 
-        user = collection.find_one({"Email":email, "Password":password})
+        user = cliente.find_one({"Email": email, "Password": password})
         if user:
-            if check_password_hash(user.password, password)
-                flash('Accesso eseguito', category=success)
-                else:
-                    flash('Password incorretta', category=error)
+            if user.password == password:
+                flash('Accesso eseguito', category="success")
+            else:
+                 flash('Password incorretta', category="error")
         else:
-        flash('Email non registrata', category=error)
+            flash('Email non registrata', category="error")
 
     return render_template('login.html', boolean=True)
 
@@ -43,11 +43,9 @@ def signin():
         email = request.form.get('Email')
         password = request.form.get('Password')
 
-        user = collection.find_one({"Email": email, "Password": password})
+        user = cliente.find_one({"Email": email, "Password": password})
         if user:
             flash("Email già registrata", category="error")
-    else:
-        flash('Email non registrata', category=error)
 
         elif len(email) < 4:
             flash("L'email deve essere di almeno 4 caratteri!", category="error")
