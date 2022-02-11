@@ -172,6 +172,10 @@ a.dropdown-item:hover{
     .hiddensmall{
         display:none;
     }
+    .mobilestacco{
+        display: block !important;
+    }
+
 }
 @media (max-width: 768px){
     .hiddenmedium{
@@ -221,4 +225,8 @@ a.dropdown-item:hover{
 .centrato{
     text-align: center!important;
     margin: auto;
+}
+
+.mobilestacco{
+    display: none;
 }
