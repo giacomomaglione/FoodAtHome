@@ -43,34 +43,106 @@
 <div class="container my-5 centrato">
     <div class="row centrato">
         <div class="pfive centrato col-xs-4 col-sm-5 col-md-4 col-lg-3">
-            <p class="text-center fw-bold">Prenota turno</p>
+            <p class="text-center fw-bold" onclick="viewShiftPage()">Prenota turno</p>
         </div>
         <div class="col-xs-12 mobilestacco">
             <br>
         </div>
         <div class="pfive centrato col-xs-4 col-sm-5 col-md-4 col-lg-3">
-            <p class="text-center fw-bold">Prenota ordine</p>
+            <p class="text-center fw-bold" onclick="viewOrderPage()">Prenota ordine</p>
         </div>
     </div>
 </div>
-<div class="container my-5">
-    <div class="row">
 
-    </div>
-</div>
-<div class="container my-5">
-    <div class="row">
+<!-- Turni -->
 
-    </div>
-    <div class="container my-5">
-        <div class="row">
-
+<div id="ShiftPage" class="container">
+    <style>
+        #ShiftPage{
+            display: none;
+        }
+    </style>
+    <div class="hiddenmedium hiddensmall">
+        <br>
+        <hr>
+        <br>
+        <div class="row centrato">
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Data Turno</b></div>
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Orario di inizio/fine</b></div>
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Prenotazione</b></div>
         </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="row centrato">
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">10/02/2022</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">17:00/00:00</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3">Prenota turno</button></div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="row centrato">
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">10/02/2022</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">18:00/23:30</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3">Prenota turno</button></div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="row centrato">
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">10/02/2022</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">19:00/00:00</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3">Prenota turno</button></div>
+    </div>
+    <br>
 </div>
+
+<!-- Ordini -->
+
+<div id="OrderPage" class="container">
+    <style>
+        #OrderPage{
+            display: none;
+        }
+    </style>
+    <div class="hiddenmedium hiddensmall">
+        <br>
+        <hr>
+        <br>
+        <div class="row centrato">
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Indirizzo locale</b></div>
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Indirizzo cliente</b></div>
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Prenotazione</b></div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="row centrato">
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Via Roma,22 Casoria - Napoli</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Via Garibaldi, 99 Afragola - Napoli</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3">Prenota ordine</button></div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="row centrato">
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Via Roma,22 Casoria - Napoli</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Via Garibaldi, 99 Afragola - Napoli</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3">Prenota ordine</button></div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="row centrato">
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Via Roma,22 Casoria - Napoli</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Via Garibaldi, 99 Afragola - Napoli</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3">Prenota ordine</button></div>
+    </div>
+    <br>
 </div>
-<br>
-<br>
-<br>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
