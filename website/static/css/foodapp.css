@@ -218,6 +218,10 @@ a.dropdown-item:hover{
     text-align: center!important;
 }
 
+.centrato{
+    text-align: center!important;
+}
+
 .tabella{
     max-width: 100%;
     min-width: 100%;
