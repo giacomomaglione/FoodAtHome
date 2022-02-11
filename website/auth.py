@@ -1,16 +1,19 @@
 from flask import Blueprint, request, flash, render_template, redirect, url_for
-from pymongo import MongoClient
+# from pymongo import MongoClient
+#from __init__ import app
 import certifi
+from website import database
 from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
-connessione = MongoClient("mongodb+srv://foodathome:UniParthenope@cluster0.fkbq2.mongodb.net/test",
-                          tlsCAFile=certifi.where())
-database = connessione["foodathome"]
-cliente = database["Customer"]
-rider = database["Rider"]
-negozio = database["Store"]
+#connessione = MongoClient("mongodb+srv://foodathome:UniParthenope@cluster0.fkbq2.mongodb.net/test",
+ #                         tlsCAFile=certifi.where())
+
+#database = connessione["foodathome"]
+cliente = database.Database.DATABASE["Customer"]
+rider = database.Database.DATABASE["Rider"]
+negozio = database.Database.DATABASE["Store"]
 
 
 @auth.route("/login", methods=['GET', 'POST'])
@@ -27,8 +30,8 @@ def login():
             if user["Email"] == email:
                 if user["Password"] == password:
                     flash('Accesso eseguito', category="success")
-                    login_user(user, remember=True)
-                    return redirect(url_for('views.clentindex'))
+                    #login_user(user, remember=True)
+                    #return redirect(url_for('views.clentindex'))
                 else:
                     flash('Password incorretta', category="error")
 
