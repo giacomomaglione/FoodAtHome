@@ -2,7 +2,6 @@ import certifi
 import pymongo
 
 
-
 class Database(object):
     URI = "mongodb+srv://foodathome:UniParthenope@cluster0.fkbq2.mongodb.net/test"
 
