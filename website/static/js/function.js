@@ -125,59 +125,34 @@ function viewNewOrder() {
 function viewMenuControl() {
     var div_menu = document.getElementById("MenuControl");
     var div_order = document.getElementById("OrderControl");
+    var div_ins = document.getElementById("InsertProduct");
     if (div_menu.style.display === "none") {
         div_menu.style.display = "block";
         div_order.style.display = "none";
     } else {
         div_menu.style.display = "none";
+        div_ins.style.display = "none";
     }
 }
 function viewOrderControl() {
     var div_menu = document.getElementById("MenuControl");
     var div_order = document.getElementById("OrderControl");
+    var div_ins = document.getElementById("InsertProduct");
     if (div_order.style.display === "none") {
         div_order.style.display = "block";
         div_menu.style.display = "none";
+        div_ins.style.display = "none";
     } else {
         div_order.style.display = "none";
     }
 }
 
-
 function viewInsertProduct() {
     var div_ins = document.getElementById("InsertProduct");
-    var div_rem = document.getElementById("RemoveProduct");
-    var div_mod = document.getElementById("ModifyProduct");
     if (div_ins.style.display === "none") {
         div_ins.style.display = "block";
-        div_rem.style.display = "none";
-        div_mod.style.display = "none";
     } else {
         div_ins.style.display = "none";
-    }
-}
-function viewModifyProduct() {
-    var div_ins = document.getElementById("InsertProduct");
-    var div_rem = document.getElementById("RemoveProduct");
-    var div_mod = document.getElementById("ModifyProduct");
-    if (div_mod.style.display === "none") {
-        div_mod.style.display = "block";
-        div_ins.style.display = "none";
-        div_rem.style.display = "none";
-    } else {
-        div_mod.style.display = "none";
-    }
-}
-function viewRemoveProduct() {
-    var div_ins = document.getElementById("InsertProduct");
-    var div_rem = document.getElementById("RemoveProduct");
-    var div_mod = document.getElementById("ModifyProduct");
-    if (div_rem.style.display === "none") {
-        div_rem.style.display = "block";
-        div_ins.style.display = "none";
-        div_mod.style.display = "none";
-    } else {
-        div_rem.style.display = "none";
     }
 }
 
@@ -200,5 +175,32 @@ function viewOrderPage(){
         div_shi.style.display = "none";
     } else {
         div_ord.style.display = "none";
+    }
+}
+
+
+function searchLocal(){
+    let table = document.createElement('table');
+    let thead = document.createElement('thead');
+    let tbody = document.createElement('tbody');
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+
+    let row_1 = document.createElement('tr');
+    let heading_1 = document.createElement('th');
+    heading_1.innerHTML = "Nome locale";
+
+    row_1.appendChild(heading_1);
+    thead.appendChild(row_1);
+
+    for(i=0;i<2;i++){
+        let row_2 = document.createElement('tr');
+        let row_2_data_1 = document.createElement('td');
+        row_2_data_1.innerHTML = "1.";
+
+        row_2.appendChild(row_2_data_1);
+        tbody.appendChild(row_2);
+
     }
 }
