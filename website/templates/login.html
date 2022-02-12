@@ -42,7 +42,8 @@
 
                 </div>
                 {{ form.submit(class="btn btn-primary fw-bold my-3")}}
-
+                <p class="fw-bold">Sei un rider? <a href="{{url_for('auth.loginrider')}}" class="access"> Clicca qui </a> </p>
+                <p class="fw-bold">Hai un negozio? <a href="{{url_for('auth.loginlocal')}}" class="access"> Clicca qui</a> </p>
             </form>
         </div>
         <div class="col-3">
