@@ -40,47 +40,230 @@
 <!--Bottoni homepage-->
 <br>
 <br>
+
 <div class="container my-5">
     <div class="row">
-        <div class="col-sm-1 col-md-1 col-lg-1">
-
+        <div class="pfive centrato col-sm-5 col-md-4 col-lg-3" onclick="viewNewOrder()">
+            <p class="text-center fw-bold">Crea un ordine</p>
         </div>
-        <div class="pfive col-sm-5 col-md-4 col-lg-3">
-            <a class="access" href="">
-            <p class="text-center fw-bold">Crea un nuovo ordine</p>
-            </a>
+        <div class="col-xs-12 mobilestacco">
+            <br>
         </div>
-        <div class="col-sm-1 col-md-3 col-lg-3">
-
-        </div>
-        <div class="pfive col-sm-5 col-md-4 col-lg-3">
-            <a class="access"  href="">
+        <div class="pfive centrato col-sm-5 col-md-4 col-lg-3" onclick="viewHistoryOrder()">
             <p class="text-center fw-bold">Storico ordini</p>
-            </a>
-        </div>
-        <div class=" col-lg-2">
-
         </div>
     </div>
 </div>
-<div class="container my-5">
+
+<!--Nuovo ordine-->
+<div class="container my-5" id="NewOrder">
+    <style>
+        #NewOrder{
+            display: none;
+        }
+    </style>
     <div class="row">
-
-    </div>
-</div>
-<div class="container my-5">
-    <div class="row">
-
-    </div>
-    <div class="container my-5">
-        <div class="row">
+        <div class="col-xs-1 col-sm-1 col-md-3 col-lg-3">
 
         </div>
+        <div class="mb-3 my-3 form-group col-xs-12 col-sm-8 col-md-5 col-lg-5">
+            <input type="name" class="form-control" id="Name" name="Name" placeholder="Inserisci un indirizzo">
+        </div>
+        <div class="mb-3 my-3 form-group centrato col-xs-1 col-sm-1 col-md-1 col-lg-1 ">
+            <button type="button" class="buttonsearch fw-bold my-3 " onclick="viewAvaibleLocal()">Cerca</button>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-3 col-lg-3">
+
+        </div>
+    </div>
+    <br><br>
+    <div class="container">
+        <div class="hiddenmedium hiddensmall" id="HeadLocal">
+            <style>
+            #HeadLocal{
+                display: none;
+            }
+            </style>
+            <div class="row centrato">
+                <div class="centrato buttonsearch fw-bold my-3" style="font-size: 200%"><b>Locali disponibili</b></div>
+            </div>
+            <br>
+            <div class="row centrato">
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Nome locale</b></div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Immagine</b></div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"></div>
+            </div>
+            <br>
+            <hr>
+        </div>
+        <div id="AvaibleLocal">
+            <style>
+            #AvaibleLocal{
+                display: none;
+            }
+            </style>
+            <div class="row centrato">
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">McDonald's</div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="viewLocalMenu()">Seleziona</button></div>
+            </div>
+            <hr>
+            <div class="row centrato">
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Burger King</div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="viewLocalMenu()">Seleziona</button></div>
+            </div>
+            <hr>
+            <div class="row centrato">
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Pizzeria Vesuvio</div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="viewLocalMenu()">Seleziona</button></div>
+            </div>
+            <hr>
+        </div>
+        <div id="LocalMenu">
+            <style>
+            #LocalMenu{
+                display: none;
+            }
+            </style>
+
+<!--Carrello -->
+            <div class="centrato" id="Cart">
+                <style>
+                    #Cart{
+                        display: none;
+                    }
+                </style>
+                <br>
+                <div class="row centrato">
+                    <div class="centrato buttonsearch fw-bold my-3" style="font-size: 200%"><b>Carrello</b></div>
+                </div>
+                <br>
+                <div class="row centrato hiddenmedium hiddensmall">
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><b>Prodotto</b></div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><b>Quantità </b></div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><b>Prezzo </b></div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"></div>
+                </div>
+                <div class="row centrato">
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">Panino 1</div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">x2</div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">2€</div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="removeFromCart()">Rimuovi</button></div>
+                </div>
+                <div class="row centrato">
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">Panino 2</div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">x2</div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">2€</div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="removeFromCart()">Rimuovi</button></div>
+                </div>
+                <hr>
+                <div class="row centrato">
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"></div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"></div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><div><b>Prezzo Totale </b></div><b>5€ </b></div>
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="">Ordina</button></div>
+                </div>
+                <br>
+                <br>
+            </div>
+
+            <div class="centrato">
+                <button type="button" class="buttonsearch fw-bold my-3" onclick="viewAvaibleLocal()">Torna indietro</button>
+            </div>
+            <br>
+            <div class="row centrato">
+                <div class="centrato buttonsearch fw-bold my-3" style="font-size: 200%"><b>Menù</b></div>
+            </div>
+            <br>
+            <div class="row centrato hiddenmedium hiddensmall">
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><b>Nome </b></div>
+                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><b>Descrizione </b></div>
+                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><b>Immagine</b></div>
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><b>Prezzo </b></div>
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><b>Seleziona</b></div>
+            </div>
+            <hr>
+            <div class="row centrato">
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">Panino 1</div>
+                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione</div>
+                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">10€ </div>
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="addCart()">Aggiungi</button></div>
+            </div>
+            <hr>
+            <div class="row centrato">
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">Panino 1</div>
+                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione </div>
+                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">10€ </div>
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="addCart()">Aggiungi</button></div>
+            </div>
+            <hr>
+            <div class="row centrato">
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">Panino 1</div>
+                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione</div>
+                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">10€</div>
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="addCart()">Aggiungi</button></div>
+            </div>
+            <hr>
+
+        </div>
+        <br>
+    </div>
 </div>
+
+<!--- Storico ordini-->
+<div class="container my-5" id="HistoryOrder">
+    <style>
+        #HistoryOrder{
+            display: none;
+        }
+    </style>
+    <div class="hiddenmedium hiddensmall">
+            <div class="row centrato">
+                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Locale</b></div>
+                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Descrizione</b></div>
+                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Prezzo</b></div>
+                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Data</b></div>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="row centrato">
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">McDonald's</div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">panino,coca cola...</div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">25€</div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10/10/2010</div>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="row centrato">
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">McDonald's</div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">panino,coca cola...</div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">65€</div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10/10/2010</div>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="row centrato">
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">McDonald's</div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">panino,coca cola...</div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10€</div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10/10/2010</div>
+        </div>
 </div>
 <br>
 <br>
 <br>
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
