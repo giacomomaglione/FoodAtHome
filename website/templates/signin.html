@@ -65,7 +65,7 @@
                         <div class="mb-3 my-3 form-group">
                             {{ form.gender.label (class="form-label fw-bold")}}
                             <br>
-                            {{form.gender}}
+                            {{form.gender (class="form-label fw-bold")}}
                         </div>
                         <div class="mb-3 my-3 form-group">
                            {{ form.telephone.label (class="form-label fw-bold")}}
@@ -92,7 +92,7 @@
                         </div>
                     </div>
 
-                <button onclick="signinClientControl()" type="submit" class="btn btn-primary fw-bold my-3">Registrati</button>
+                 {{ form.submit(class="btn btn-primary fw-bold my-3", onclick="signinClientControl()" )}}
             </form>
         </div>
         <div class="col-3">
