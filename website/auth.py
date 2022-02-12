@@ -4,7 +4,7 @@ from flask_login import current_user, login_user, logout_user, login_required, U
 from .form import Login, ClientSigninForm, RiderSigninForm, LocalSigninForm
 from werkzeug.urls import url_parse
 from . import cliente, rider, negozio
-from .models import Cliente, Rider # NON LO CANCELLARE; Missing user_loader or request_loader
+from .models import Cliente, Rider, Local # NON LO CANCELLARE; Missing user_loader or request_loader
 
 auth = Blueprint('auth', __name__)
 
@@ -221,7 +221,7 @@ def signinlocal():
                 account = {"Name": name, "Surname": surname, "Street": street, "City": city, "Province": province,
                            "Birthday": date, "Gender": gender, "PhoneNumber": telephone, "TaxCode": taxcode,
                            "Email": email, "Password": password, "ID": id, "IBAN" : iban, "LocalName": localname, "IVA": piva}
-                local.insert_one(account)
+                negozio.insert_one(account)
                 return redirect('views.index')
         else:
             flash("Email già registrata", category="error")
