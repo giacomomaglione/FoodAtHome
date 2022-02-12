@@ -71,14 +71,17 @@ a.dropdown-item:hover{
 
 .access{
     color:white !important;
-    /*text-decoration: none;*/
+    text-decoration: none;
 
+}
+div div div form div ul li::marker {
+    color: #30a3d5;
 }
 
 .access:hover {
     color:white !important;
-    /*text-decoration: none;*/
-    /*text-shadow: 4px 4px 2px rgb(92, 91, 91) !important;*/
+    text-decoration: none;
+    text-shadow: 4px 4px 2px rgb(92, 91, 91) !important;
 }
 
 .ptwo{
@@ -230,4 +233,17 @@ a.dropdown-item:hover{
 
 .mobilestacco{
     display: none;
+}
+
+.btn-close {
+  position: absolute !important;
+  right: 16px !important;
+  top: 10px !important;
+  width: 32px !important;
+  height: 32px !important;
+  opacity: 0.5 !important;
+}
+.btn-close:hover {
+  opacity: 1 !important;
+    border: 2px solid #606060;
 }
