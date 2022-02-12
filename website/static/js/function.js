@@ -112,17 +112,80 @@ function upperCase() {
 }
 
 
+<!--Controlli Cliente -->
+function viewNewOrder() {
+    var div_new = document.getElementById("NewOrder");
+    var div_ava = document.getElementById("AvaibleLocal");
+    var div_hea = document.getElementById("HeadLocal");
+    div_hea.style.display = "none";
+    var div_his = document.getElementById("HistoryOrder");
+    if (div_new.style.display === "none") {
+        div_new.style.display = "block";
+        div_his.style.display = "none";
+    } else {
+        div_ava.style.display= "none";
+        div_new.style.display = "none";
+    }
+}
+function viewAvaibleLocal() {
+    var div_ava = document.getElementById("AvaibleLocal");
+    var div_hea = document.getElementById("HeadLocal");
+    div_hea.style.display = "block";
+    var div_loc = document.getElementById("LocalMenu");
+    div_loc.style.display = "none";
+    div_hea.style.display = "block";
+    if (div_ava.style.display === "none") {
+        div_ava.style.display = "block";
+    } else {
+        div_ava.style.display = "block";
+    }
+}
+function viewLocalMenu(){
+    var div_ava = document.getElementById("AvaibleLocal");
+    div_ava.style.display = "none";
+    var div_hea = document.getElementById("HeadLocal");
+    div_hea.style.display = "none";
+    var div_loc = document.getElementById("LocalMenu");
+    div_loc.style.display = "block";
+    var div_car = document.getElementById("Cart");
+    div_car.style.display = "none";
+}
+function addCart(){
+    var div_car = document.getElementById("Cart");
+    div_car.style.display = "block";
+}
+
+function viewHistoryOrder() {
+    var div_his = document.getElementById("HistoryOrder");
+    var div_new = document.getElementById("NewOrder");
+    var div_ava = document.getElementById("AvaibleLocal");
+    var div_hea = document.getElementById("HeadLocal");
+    var div_loc = document.getElementById("LocalMenu");
+    div_loc.style.display = "none";
+    if (div_his.style.display === "none") {
+        div_his.style.display = "block";
+        div_new.style.display = "none";
+        div_ava.style.display = "none";
+        div_hea.style.display = "none";
+    } else {
+        div_his.style.display = "none";
+    }
+}
+
+
+<!--Controlli Locale-->
 function viewMenuControl() {
     var div_menu = document.getElementById("MenuControl");
+    var div_order = document.getElementById("OrderControl");
     var div_ins = document.getElementById("InsertProduct");
     if (div_menu.style.display === "none") {
         div_menu.style.display = "block";
+        div_order.style.display = "none";
     } else {
         div_menu.style.display = "none";
         div_ins.style.display = "none";
     }
 }
-
 function viewInsertProduct() {
     var div_ins = document.getElementById("InsertProduct");
     if (div_ins.style.display === "none") {
@@ -133,6 +196,7 @@ function viewInsertProduct() {
 }
 
 
+<!--Controlli Rider-->
 function viewShiftPage(){
     var div_shi = document.getElementById("ShiftPage");
     var div_ord = document.getElementById("OrderPage");
