@@ -31,14 +31,17 @@
             <form method="POST">
                 <div class="mb-3 my-3 form-group">
                     <label class="form-label fw-bold ">Indirizzo email</label>
-                    <input value="{{ request.form.Email }}" type="email" class="form-control" id="Email" name="Email" aria-describedby="emailHelp">
+
+                    {{ form.email(class="form-control")}}
+
 
                 </div>
                 <div class="mb-3 form-group">
                     <label class="form-label fw-bold">Password</label>
-                    <input value="{{ request.form.Password }}" type="password" class="form-control" id="Password" name="Password">
+                    {{ form.password(class="form-control") }}
                 </div>
-                <button value="Login" type="submit" class="btn btn-primary fw-bold my-3">Accedi</button>
+                {{ form.submit(class="btn btn-primary fw-bold my-3")}}
+
             </form>
         </div>
         <div class="col-3">
