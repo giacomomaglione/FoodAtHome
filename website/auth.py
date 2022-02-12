@@ -77,7 +77,7 @@ def signin():
                            "Birthday": date, "Gender": gender, "PhoneNumber": telephone, "TaxCode": taxcode,
                            "Email": email, "Password": password}
                 cliente.insert_one(account)
-                return redirect('views.index')
+                return redirect(url_for('views.index'))
         else:
             flash("Email già registrata", category="error")
 
@@ -149,7 +149,7 @@ def signinrider():
                            "Birthday": date, "Gender": gender, "PhoneNumber": telephone, "TaxCode": taxcode,
                            "Email": email, "Password": password, "ID": id, "IBAN" : iban}
                 rider.insert_one(account)
-                return redirect('views.index')
+                return redirect(url_for('views.index'))
         else:
             flash("Email già registrata", category="error")
 
@@ -222,7 +222,7 @@ def signinlocal():
                            "Birthday": date, "Gender": gender, "PhoneNumber": telephone, "TaxCode": taxcode,
                            "Email": email, "Password": password, "ID": id, "IBAN" : iban, "LocalName": localname, "IVA": piva}
                 negozio.insert_one(account)
-                return redirect('views.index')
+                return redirect(url_for('views.index'))
         else:
             flash("Email già registrata", category="error")
 
