@@ -30,7 +30,8 @@
                             Lavora con noi
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
+                            <li><a class="dropdown-item" href="{{url_for('auth.signinrider')}}">Diventa un rider!</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('auth.signinlocal')}}">Aggiungi il tuo negozio</a></li>
 
                         </ul>
                     </li>
@@ -77,7 +78,8 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-2">
             <a href="#" class="pfooter fw-bold"><p>Lavora con noi</p></a>
-
+            <a href="{{url_for('auth.signinrider')}}" class="pfooter"><p>Diventa un rider</p></a>
+            <a href="{{url_for('auth.signinlocal')}}" class="pfooter"><p>Hai un'attività?</p></a>
         </div>
         <div class="col-sm-1"></div>
         <div class="col-sm-2">
