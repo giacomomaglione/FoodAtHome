@@ -38,33 +38,18 @@
     </nav>
 </b>
 
-<!--Bottoni homepage-->
+<!--Bottone homepage-->
 <br>
 <br>
-<div class="container my-5">
-    <div class="row">
-        <div class="col-sm-1 col-md-1 col-lg-1">
-
-        </div>
-        <div class="pfive col-sm-5 col-md-4 col-lg-3" onclick="viewMenuControl()">
+<div class="container my-5 centrato">
+        <div class="pfive col-sm-4 col-md-3 col-lg-3 centrato" onclick="viewMenuControl()">
             <br>
                 <p class="text-center fw-bold">Menù</p>
             <br>
         </div>
-        <div class="col-sm-1 col-md-2 col-lg-3">
-
-        </div>
-        <div class="pfive col-sm-5 col-md-4 col-lg-3" onclick="viewOrderControl()">
-            <br>
-                <p class="text-center fw-bold">Ordini</p>
-            <br>
-        </div>
-        <div class=" col-md-1 col-lg-2">
-
-        </div>
-    </div>
 </div>
 
+<!--Menù Control-->
 
 <div class="container my-5" id="MenuControl" >
     <style>
@@ -73,167 +58,84 @@
         }
     </style>
     <div class="row">
-        <div class=" col-sm-4 col-md-3 col-lg-3" >
-                
-        </div>
-        <div class="col-sm-1 col-md-1 col-lg-1">
-
-        </div>
-        <div class="psix col-sm-4 col-md-3 col-lg-3" onclick="viewInsertProduct()">
+        <div class="psix col-sm-4 col-md-3 col-lg-3 centrato" onclick="viewInsertProduct()">
                 <p class="text-center fw-bold">Inserisci prodotto</p>
-        </div>
-        <div class="col-sm-1 col-md-1 col-lg-1">
-
-        </div>
-        <div class=" col-sm-4 col-md-3 col-lg-3">
-            
-        </div>
-        <div class="col-sm-1 col-md-0 col-lg-2">
-
         </div>
     </div>
     <div  class="container my-5" id="InsertProduct">
-    <style>
-        #InsertProduct{
-            display: none;
-        }
-    </style>
-    <div class="row">
-            <div class="mb-3 my-3 col-sm-8 col-md-6 col-lg-4">
-                <label class="form-label fw-bold ptwo">Nome</label>
-                <input class="form-control" id="ProductName" placeholder="Inserisci il nome del prodotto"><br>
-                <label class="form-label fw-bold ptwo">Prezzo</label>
-                <input  class="form-control" id="ProductPrice" pattern="[0-9]{2}" placeholder="Inserisci il prezzo del prodotto"><br>
-                <label class="form-label fw-bold ptwo">Descrizione</label>
-                <input class="form-control" id="ProductDescription" placeholder="Inserisci una descrizione del prodotto"><br>
-            </div>
-            <div class="col-md-1 col-lg-2">
+        <style>
+            #InsertProduct{
+                display: none;
+            }
+        </style>
+        <div class="row">
+                <div class="mb-3 my-3 col-sm-8 col-md-6 col-lg-4 centrato">
+                    <label class="form-label fw-bold ptwo">Nome</label>
+                    <input class="form-control" id="ProductName" placeholder="Inserisci il nome del prodotto"><br>
+                    <label class="form-label fw-bold ptwo">Prezzo</label>
+                    <input  class="form-control" id="ProductPrice" pattern="[0-9]{2}" placeholder="Inserisci il prezzo del prodotto"><br>
+                    <label class="form-label fw-bold ptwo">Descrizione</label>
+                    <input class="form-control" id="ProductDescription" placeholder="Inserisci una descrizione del prodotto"><br>
+                </div>
+                <div class="col-md-1 col-lg-2">
 
-            </div>
-            <div class="mb-3 my-3 col-sm-6 col-md-5 col-lg-3">
-                <row>
-                    <label class="form-label fw-bold ptwo">Allega Immagine</label>
-                    <br>
-                    <input type="file" id="myfile" name="myfile">
-                </row>
-                <br><br>
-                <row>
-                    <label class="form-label fw-bold ptwo">Anteprima Immagine</label>
-                    <img src="" alt="" class="anteprima">
-                </row>
-            </div>
-    </div>
-    <div class="row">
-        <div class="col-md-5 col-lg-5">
-
+                </div>
+                <div class="mb-3 my-3 col-sm-6 col-md-5 col-lg-3 centrato">
+                        <label class="form-label fw-bold ptwo">Allega Immagine</label>
+                        <br>
+                        <input type="file" id="myfile" name="myfile">
+                    <br><br>
+                        <label class="form-label fw-bold ptwo">Anteprima Immagine</label><br>
+                        <img src="../static/img/450.png" alt="" class="anteprima">
+                </div>
         </div>
-        <div class="col-md-4 col-lg-4">
-            <button type="button" class="buttonsearch fw-bold my-3">Aggiungi</button>
+        <div class="row centrato">
+            <div class="centrato">
+                <button type="button" class="buttonsearch fw-bold my-3">Aggiungi</button>
 
+            </div>
         </div>
-    </div>
     <br>
     </div>
     <br><br>
     <div id="viewLocalProduct" class="container">
-    <table class="tabella">
-        <head>
-            <th>Prodotto</th>
-            <th>Descrizione</th>
-            <th>Prezzo</th>
-            <th>Immagine</th>
-            <th></th>
-        </head>
-        <tr>
-            <td>Pizza Margheritwerwerwerwerwerwera</td>
-            <td>Pizza con pomodoro e mozzarella</td>
-            <td>€4,00</td>
-            <td><img src="" alt="" class="anteprima"></td>
-            <td>
-                <button type="button" class="buttonsearch2 fw-bold my-3">Elimina</button>
-            </td>
-        </tr>
-        <tr>
-            <td>Pizza Margherita</td>
-            <td>Pizza con pomodoewrtgwertgertgert gherthertherhertherthhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhh hhhhhhh hhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhh hhhhhhhhhhhhh hhhhhhhhhhhhhhh hhhhhhhhhhhh hhhhhh hhhhhhhhhhhro e mozzarella erwwertwertwertwetewrtgergtrtghrthertherthy</td>
-            <td>€4,00</td>
-            <td><img src="" alt="" class="anteprima"></td>
-            <td>
-                <button type="button" class="buttonsearch2 fw-bold my-3">Elimina</button>
-            </td>
-        </tr>
-        <tr>
-            <td>Pizza Margheritateryrty</td>
-            <td>Pizza con pomodoro e mozzertyrtySDarella</td>
-            <td>€4,00</td>
-            <td><img src="" alt="" class="anteprima"></td>
-            <td>
-                <button type="button" class="buttonsearch2 fw-bold my-3">Elimina</button>
-            </td>
-        </tr>
-    </table>
+        <br>
+        <hr>
+        <br>
+        <div class="row centrato">
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><b>Pizza Margherita</b></div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">€4,00</div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">Pizza con pomodoro e mozzarella</div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><img class="anteprima" src="../static/img/450.png" alt=""></div>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="row centrato">
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><b>Pizza Margherita</b></div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">€4,00</div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">Pizza con pomodoro e mozzarella</div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><img class="anteprima" src="../static/img/450.png" alt=""></div>
+        </div>
+        <br>
+        <hr>
+        <br><div class="row centrato">
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><b>Pizza Margherita</b></div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">€4,00</div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">Pizza con pomodoro e mozzarella</div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><img class="anteprima" src="../static/img/450.png" alt=""></div>
+        </div>
+        <br>
+        <hr>
+        <br><div class="row centrato">
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><b>Pizza Margherita</b></div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">€4,00</div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">Pizza con pomodoro e mozzarella</div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><img class="anteprima" src="../static/img/450.png" alt=""></div>
+        </div>
+        <br>
+    </div>
 </div>
-</div>
-
-
-
-
-
-
-<div class="container my-5" id="OrderControl" >
-    <style>
-        #OrderControl{
-            display: none;
-        }
-    </style>
-    <div id="viewLocalOrder" class="container">
-
-        <h2>Ordine</h2>
-    <table class="tabella">
-        <head>
-            <th>Prodotto</th>
-            <th>Quantità</th>
-        </head>
-        <tr>
-            <td>Pizza Margherita</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>Pizza Marinara</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>CocaCola</td>
-            <td>3</td>
-        </tr>
-
-    </table>
-        <br><button type="button" class="buttonsearch fw-bold my-3">Preparato</button>
-        <br><br>
-        <h2>Ordine</h2>
-        <table class="tabella">
-        <head>
-            <th>Prodotto</th>
-            <th>Quantità</th>
-        </head>
-        <tr>
-            <td>Pizza Margherita</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>Pizza Marinara</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>CocaCola</td>
-            <td>3</td>
-        </tr>
-
-    </table>
-        <br> <button type="button" class="buttonsearch fw-bold my-3">Preparato</button>
-        <br><br>
-</div>
-
 
 <div class="container my-5">
     <div class="row">
