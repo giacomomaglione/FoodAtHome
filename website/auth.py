@@ -13,21 +13,27 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = Login()
-    print(form.email)
-    print(form.password)
+
+    formemail = form.email.data
+    formpassword = form.password.data
+
     if form.validate_on_submit():
-        user = cliente.find_one({"Email": request.form.get('Email')})
-        if user and user["Password"] == request.form.get('Email'):
+        user = cliente.find_one({"Email": formemail})
+
+        if not user:
+            flash("Email non registrata", category=error)
+
+        elif user["Password"] == formpassword:
+            flash("Accesso Eseguito")
             user_obj = Cliente(username=user['Email'])
             login_user(user_obj)
             next_page = request.args.get('next')
             if not next_page or url_parse(next_page).netloc != '':
-                next_page = url_for('index')
+                next_page = url_for('views.index')
             return redirect(next_page)
         else:
-            flash("Invalid username or password")
-    else:
-        flash("validate_on_submit")
+            flash("Password Errata", category=error)
+
     return render_template('login.html', form = form)
 
 @auth.route("/logout")

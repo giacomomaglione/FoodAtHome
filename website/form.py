@@ -1,12 +1,12 @@
 from flask import Blueprint
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, RadioField, DateField, IntegerField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, InputRequired
 
 form = Blueprint('form', __name__)
 
 class Login(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
+    email = StringField('Indirizzo Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
 
