@@ -2,32 +2,25 @@ from . import login
 from . import cliente
 from flask_wtf import FlaskForm
 from flask_login import LoginManager
+
 class Cliente():
-    def __init__(self, username):
-        self.username = username
+    def __init__(self, Email):
+        self.Email = Email
 
     @staticmethod
-    def is_authenticated():
+    def is_authenticated(self):
         return True
 
     @staticmethod
-    def is_active():
+    def is_active(self):
         return True
 
     @staticmethod
-    def is_anonymous():
+    def is_anonymous(self):
         return False
 
     def get_id(self):
-        return self.username
-
-    @login.user_loader
-    def load_user(username):
-        u = cliente.find_one({"Name": username})
-        if not u:
-            return None
-        return cliente(username=u['username'])
-
+        return self.Email
 
 
 class Rider():
