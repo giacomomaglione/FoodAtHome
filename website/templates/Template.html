@@ -52,10 +52,16 @@
     'error' %}
     <div class="alert alert-danger alter-dismissable text-center fade show" role="alert">
       {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     {% else %}
     <div class="alert alert-success alter-dismissable fade show text-center" role="alert">
       {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     {% endif %} {% endfor %} {% endif %} {% endwith %}
 
