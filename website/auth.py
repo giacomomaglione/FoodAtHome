@@ -155,7 +155,7 @@ def signinrider():
 
     return render_template('signinrider.html' , form=form)
 
-@auth.route("/loginrider", methods=['GET', 'POST'])
+@auth.route("/loginstore", methods=['GET', 'POST'])
 def loginlocal():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -181,10 +181,10 @@ def loginlocal():
         else:
             flash("Password Errata", category='error')
 
-    return render_template('loginlocal.html', form = form)
+    return render_template('loginstore.html', form = form)
 
 @auth.route("/signinrider", methods=['GET', 'POST'])
-def signinrider():
+def signinlocal():
 
     form = LocalSigninForm()
 
