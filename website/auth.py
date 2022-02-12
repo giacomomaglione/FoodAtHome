@@ -5,13 +5,21 @@ from .form import Login, ClientSigninForm, RiderSigninForm, LocalSigninForm
 from werkzeug.urls import url_parse
 from . import cliente, rider, negozio
 from .models import Cliente, Rider, Local # NON LO CANCELLARE; Missing user_loader or request_loader
+from . import login
 
 auth = Blueprint('auth', __name__)
+
+@login.user_loader
+def load_user(Email):
+    u = cliente.find_one({"Email": Email})
+    if not u:
+        return None
+    return Cliente(Email=u['Email'])
 
 @auth.route("/login", methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('views.customerindex'))
     form = Login()
 
     formemail = form.email.data
@@ -25,8 +33,8 @@ def login():
 
         elif user["Password"] == formpassword:
             flash("Accesso Eseguito")
-            user_obj = Cliente(username=user['Email'])
-            login_user(user_obj)
+            user_obj = Cliente(Email=user['Email'])
+            login_user(user_obj, True)
             next_page = request.args.get('next')
             if not next_page or url_parse(next_page).netloc != '':
                 next_page = url_for('views.customerindex')
@@ -40,6 +48,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash('You have been logged out.')
     return redirect(url_for('views.index'))
 
 @auth.route("/signin", methods=['GET', 'POST'])
