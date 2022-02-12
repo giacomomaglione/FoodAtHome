@@ -183,7 +183,7 @@ def loginlocal():
 
     return render_template('loginstore.html', form = form)
 
-@auth.route("/signinrider", methods=['GET', 'POST'])
+@auth.route("/signinlocal", methods=['GET', 'POST'])
 def signinlocal():
 
     form = LocalSigninForm()
