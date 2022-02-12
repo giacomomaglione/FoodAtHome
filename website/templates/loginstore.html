@@ -4,15 +4,11 @@
 {{ super() }}
 <br>
 <div class="container">
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4">
-            <h2 class="titolo fw-bold">Accedi</h2>
+    <div class="row centrato">
+        <div>
+            <h2 class="titolo fw-bold">Accedi - Negozio</h2>
         </div>
-        <div class="col-4"></div>
-
     </div>
-
 </div>
 
 <div class="container">
@@ -41,9 +37,8 @@
                     <input type="checkbox" class="form-check-input fw-bold" id="Check1">
                     <label class="form-check-label" for="Check1">Ricordami</label>
                 </div>
-               <!--- <p class="fw-bold"> Sei un rider? <a href="{{url_for('auth.loginrider')}}"> Clicca qui </p></a>
-                <p class="fw-bold"> Sei un cliente? <a href="{{url_for('auth.loginshop')}}"> Clicca qui </p></a> --->
-
+                <p class="fw-bold">Sei un rider? <a href="{{url_for('auth.loginrider')}}" class="access"> Clicca qui</p></a>
+                <p class="fw-bold">Sei un cliente? <a href="{{url_for('auth.login')}}" class="access"> Clicca qui</p></a>
                 <button type="submit" class="btn btn-primary fw-bold my-3">Accedi</button>
             </form>
         </div>
