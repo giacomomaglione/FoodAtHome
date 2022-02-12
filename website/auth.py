@@ -4,10 +4,11 @@ from flask_login import current_user, login_user, logout_user, login_required, U
 from .form import Login, ClientSigninForm, RiderSigninForm, LocalSigninForm
 from werkzeug.urls import url_parse
 from . import cliente, rider, negozio
-from .models import Cliente, Rider, Local # NON LO CANCELLARE; Missing user_loader or request_loader
+from .models import Cliente, Rider, Local  # NON LO CANCELLARE; Missing user_loader or request_loader
 from . import login
 
 auth = Blueprint('auth', __name__)
+
 
 @login.user_loader
 def load_user(Email):
@@ -15,6 +16,7 @@ def load_user(Email):
     if not u:
         return None
     return Cliente(Email=u['Email'])
+
 
 @auth.route("/login", methods=['GET', 'POST'])
 def login():
@@ -44,12 +46,14 @@ def login():
 
     return render_template('login.html', form = form)
 
+
 @auth.route("/logout")
 @login_required
 def logout():
     logout_user()
     flash('You have been logged out.')
     return redirect(url_for('views.index'))
+
 
 @auth.route("/signin", methods=['GET', 'POST'])
 def signin():
@@ -120,6 +124,7 @@ def loginrider():
             flash("Password Errata", category='error')
 
     return render_template('loginrider.html', form = form)
+
 
 @auth.route("/signinrider", methods=['GET', 'POST'])
 def signinrider():
