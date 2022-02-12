@@ -5,13 +5,10 @@
 
 <br>
 <div class="container">
-    <div class="row">
-        <div class="col-5"></div>
-        <div class="col-3">
-            <h2 class="titolo fw-bold">Registrati</h2>
+    <div class="row centrato">
+        <div>
+            <h2 class="titolo fw-bold">Registrati - Locale</h2>
         </div>
-        <div class="col-4"></div>
-
     </div>
 
 </div>
@@ -81,7 +78,7 @@
                      <div class="mb-3 my-3 form-group">
                         {{ form.iban.label (class="form-label fw-bold")}}
                         <br>
-                        {{ form.iban (class="form-control", onchange="upperCase()",pattern="[A-Z]{2}[0-9]{2}[A-Z]{1}[0-9]{22}", placeholder="Inserisci il tuo IBAN )}}
+                        {{ form.iban (class="form-control", onchange="upperCase()",pattern="[A-Z]{2}[0-9]{2}[A-Z]{1}[0-9]{22}", placeholder="Inserisci il tuo IBAN" )}}
                     </div>
                      <div class="mb-3 my-3 form-group">
                         {{ form.id.label (class="form-label fw-bold")}}
