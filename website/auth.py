@@ -21,7 +21,7 @@ def login():
         user = cliente.find_one({"Email": formemail})
 
         if not user:
-            flash("Email non registrata", category=error)
+            flash("Email non registrata", category='error')
 
         elif user["Password"] == formpassword:
             flash("Accesso Eseguito")
@@ -32,7 +32,7 @@ def login():
                 next_page = url_for('views.index')
             return redirect(next_page)
         else:
-            flash("Password Errata", category=error)
+            flash("Password Errata", category='error')
 
     return render_template('login.html', form = form)
 
@@ -44,20 +44,24 @@ def logout():
 
 @auth.route("/signin", methods=['GET', 'POST'])
 def signin():
-    if request.method == 'POST':
-        name = request.form.get('Name')
-        surname = request.form.get('Surname')
-        street = request.form.get('Street')
-        city = request.form.get('City')
-        province = request.form.get('Province')
-        date = request.form.get('Date')
-        gender = request.form.get('Gender')
-        telephone = request.form.get('Telephone')
-        taxcode = request.form.get('Taxcode')
-        email = request.form.get('Email')
-        password = request.form.get('Password')
 
-        user = cliente.find_one({"Email": email})
+    form = ClientSigninForm()
+
+    if request.method == 'POST':
+
+        name = form.name.data
+        surname = form.surname.data
+        street = form.street.data
+        city = form.city.data
+        province = form.province.data
+        date = form.date.data
+        gender = form.gender.data
+        telephone = form.telephone.data
+        taxcode = form.taxcode.data
+        email = form.email.data
+        password = form.password.data
+
+        user = cliente.find_one({"Email": form.email.data})
 
         if user is None:
             if len(email) < 3:
@@ -76,4 +80,4 @@ def signin():
         else:
             flash("Email già registrata", category="error")
 
-    return render_template('signin.html')
+    return render_template('signin.html' , form=form)
