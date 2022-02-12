@@ -13,6 +13,8 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = Login()
+    print(form.email)
+    print(form.password)
     if form.validate_on_submit():
         user = cliente.find_one({"Email": request.form.get('Email')})
         if user and user["Password"] == request.form.get('Email'):

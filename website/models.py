@@ -1,5 +1,6 @@
 from . import login
 from . import cliente
+from flask_wtf import FlaskForm
 from flask_login import LoginManager
 class Cliente():
     def __init__(self, username):
