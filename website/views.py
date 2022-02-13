@@ -17,15 +17,6 @@ def index():
 def about():
     return render_template('aboutus.html')
 
-@views.route("/customerindex")
-@login_required
-def customerindex():
-    return render_template('customerindex.html')
-
-@views.route("/customereditprofile")
-@login_required
-def customereditprofile():
-    return render_template('customereditprofile.html')
 
 @views.route("/editprofile", methods=['GET', 'POST'])
 @login_required
@@ -47,9 +38,6 @@ def editprofile():
         iban = form.iban.data
         localname = form.localname.data
         piva = form.piva.data
-
-        print(password)
-
 
         if current_user.type == 0 :
             utente = cliente.find_one({"Email" : current_user.Email})
@@ -145,17 +133,13 @@ def editprofile():
 def riderindex():
     return render_template('riderindex.html')
 
-@views.route("/ridereditprofile")
-@login_required
-def ridereditprofile():
-    return render_template('ridereditprofile.html')
 
 @views.route("/localindex")
 @login_required
 def localindex():
     return render_template('localindex.html')
 
-@views.route("/localeditprofile")
+@views.route("/customerindex")
 @login_required
-def localeditprofile():
-    return render_template('localeditprofile.html')
+def customerindex():
+    return render_template('customerindex.html')
