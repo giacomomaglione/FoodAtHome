@@ -39,63 +39,61 @@ def editprofile():
         localname = form.localname.data
         piva = form.piva.data
 
-
-
-
-        print(password)
-
         if current_user.type == 0 :
             utente = cliente.find_one({"Email" : current_user.Email})
             if name is not "" :
                 cliente.update_one({'Email': utente['Email']}, {"$set": {"Name": name}})
-            if surname is not "":
+                form.name.data=""
+            if surname != "":
                 cliente.update_one({'Email': utente['Email']}, {"$set": {"Surname": surname}})
-            if street is not "":
+            if street != "":
                cliente.update_one({'Email': utente['Email']}, {"$set": {"Street": street}})
-            if city is not "":
+            if city != "":
                 cliente.update_one({'Email': utente['Email']}, {"$set": {"City": city}})
-            if province is not "":
+            if province !=  "":
                 cliente.update_one({'Email': utente['Email']}, {"$set": {"Province": province}})
-            if date is not "":
+            if date !=  "":
                 cliente.update_one({'Email': utente['Email']}, {"$set": {"Birthday": date}})
-            if gender is not None:
+            if gender !=  None:
                 cliente.update_one({'Email': utente['Email']}, {"$set": {"Gender": gender}})
-            if telephone is not "":
+            if telephone !=  "":
                 cliente.update_one({'Email': utente['Email']}, {"$set": {"PhoneNumber": telephone}})
-            if taxcode is not "":
+            if taxcode !=  "":
                 cliente.update_one({'Email': utente['Email']}, {"$set": {"TaxCode": taxcode}})
-            if email is not "":
+            if email != "":
                 cliente.update_one({'Email': utente['Email']}, {"$set": {"Email": email}})
-            if password is not "":
+            if password != "":
                 cliente.update_one({'Email': utente['Email']}, {"$set": {"Password": password}})
+
         if current_user.type == 1 :
             utente = rider.find_one({"Email" : current_user.Email})
-            if name is not "" :
+            if name !=  "" :
                 rider.update_one({'Email': utente['Email']}, {"$set": {"Name": name}})
-            if surname is not "":
+            if surname !=  "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"Surname": surname}})
-            if street is not "":
+            if street !=  "":
                rider.update_one({'Email': utente['Email']}, {"$set": {"Street": street}})
-            if city is not "":
+            if city !=  "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"City": city}})
-            if province is not "":
+            if province !=  "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"Province": province}})
-            if date is not "":
+            if date !=  "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"Birthday": date}})
-            if gender is not None:
+            if gender != None:
                 rider.update_one({'Email': utente['Email']}, {"$set": {"Gender": gender}})
-            if telephone is not "":
+            if telephone !=  "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"PhoneNumber": telephone}})
-            if taxcode is not "":
+            if taxcode !=  "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"TaxCode": taxcode}})
-            if email is not "":
+            if email !=  "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"Email": email}})
-            if password is not "":
+            if password !=  "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"Password": password}})
-            if id is not "":
+            if id != "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"ID": id}})
-            if iban is not "":
+            if iban !=  "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"IBAN": iban}})
+
         if current_user.type == 2:
             utente = negozio.find_one({"Email": current_user.Email})
             if name is not "":
@@ -128,8 +126,6 @@ def editprofile():
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"IVA": piva}})
             if localname is not "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"LocalName": localname}})
-
-
     return render_template('editprofile.html' , form=form)
 
 
