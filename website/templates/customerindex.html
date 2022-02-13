@@ -1,4 +1,4 @@
-{% extends "Templatelogged.html" %}
+{% extends "Template.html" %}
 {% block title %} <title>Accedi</title>{% endblock %}
 {% block content %}
 {{ super() }}
@@ -220,5 +220,6 @@
             <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10/10/2010</div>
         </div>
 </div>
-
+{% block footer %}
+{% endblock %}
 {% endblock %}

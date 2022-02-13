@@ -1,4 +1,4 @@
-{% extends "Templatelogged.html" %}
+{% extends "Template.html" %}
 {% block title %} <title>Food@Home-Rider</title>{% endblock %}
 {% block content %}
 {{ super() }}
@@ -110,5 +110,6 @@
     </div>
     <br>
 </div>
-
+{% block footer %}
+{% endblock %}
 {%endblock%}

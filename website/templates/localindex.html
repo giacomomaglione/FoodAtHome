@@ -1,4 +1,4 @@
-{% extends "Templatelogged.html" %}
+{% extends "Template.html" %}
 {% block title %} <title>Food@Home-Locale</title>{% endblock %}
 {% block content %}
 {{ super() }}
@@ -64,43 +64,22 @@
     </div>
     <br><br>
     <div id="viewLocalProduct" class="container">
-        <br>
+
+        {% for prodotto in product[] %}
+         <br>
         <hr>
         <br>
         <div class="row centrato">
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><b>Pizza Margherita</b></div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">€4,00</div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">Pizza con pomodoro e mozzarella</div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><img class="anteprima" src="../static/img/450.png" alt=""></div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><b> {{ prodotto[Name] }}</b></div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">€ {{ prodotto['Price'] }}</div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"> {{ prodotto['Description'] }}</div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><img class="anteprima" src="{{prodotto['Image'] }}" alt=""> </img> </div>
         </div>
-        <br>
-        <hr>
-        <br>
-        <div class="row centrato">
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><b>Pizza Margherita</b></div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">€4,00</div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">Pizza con pomodoro e mozzarella</div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><img class="anteprima" src="../static/img/450.png" alt=""></div>
-        </div>
-        <br>
-        <hr>
-        <br><div class="row centrato">
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><b>Pizza Margherita</b></div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">€4,00</div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">Pizza con pomodoro e mozzarella</div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><img class="anteprima" src="../static/img/450.png" alt=""></div>
-        </div>
-        <br>
-        <hr>
-        <br><div class="row centrato">
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><b>Pizza Margherita</b></div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">€4,00</div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">Pizza con pomodoro e mozzarella</div>
-            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12"><img class="anteprima" src="../static/img/450.png" alt=""></div>
-        </div>
-        <br>
+        {% endfor %}
     </div>
-</div>
+
+
+
 
 <div class="container my-5">
     <div class="row">
@@ -121,6 +100,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
+{% block footer %}
+{% endblock %}
 
 {%endblock%}

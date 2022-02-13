@@ -1,4 +1,4 @@
-{% extends "Templatelogged.html" %}
+{% extends "Template.html" %}
 {% block title %} <title>Modifica il tuo profilo - Food@Home</title>{% endblock %}
 {% block content %}
 {{ super() }}
@@ -272,6 +272,7 @@
             </form>
         </div>
     {%endif%} {%endif%}
-
+{% block footer %}
+{% endblock %}
 {%endblock%}
 
