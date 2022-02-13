@@ -77,3 +77,6 @@ class EditProfile(FlaskForm):
     iban = StringField('Iban')
     localname = StringField('Nome del locale')
     piva = StringField('Piva')
+
+
+#class AddProduct(FlaskForm):
