@@ -147,7 +147,7 @@ def localindex():
     list = []
     for prod in prod_query:
         list.append(prod)
-        print(prod['Name'])
+        #print(prod['Name'])
 
     return render_template('localindex.html', list=list)
 
