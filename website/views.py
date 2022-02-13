@@ -143,11 +143,13 @@ def localindex():
     if current_user.type != 2:
         return redirect(url_for('views.index'))
 
-    for product in prodotto.find({"Store": current_user.Email}):
-       print(product)
+    prod_query = prodotto.find({"Store": current_user.Email})
+    list = []
+    for prod in prod_query:
+        list.append(prod)
+        print(prod['Name'])
 
-
-    return render_template('localindex.html', product=product)
+    return render_template('localindex.html', list=list)
 
 @views.route("/customerindex")
 @login_required
