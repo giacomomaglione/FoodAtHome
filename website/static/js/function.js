@@ -174,13 +174,12 @@ function viewHistoryOrder() {
 
 
 <!--Controlli Locale-->
-function viewMenuControl() {
-    var div_menu = document.getElementById("MenuControl");
-    var div_order = document.getElementById("OrderControl");
+function viewMenuList() {
+    var div_menu = document.getElementById("MenuList");
     var div_ins = document.getElementById("InsertProduct");
     if (div_menu.style.display === "none") {
         div_menu.style.display = "block";
-        div_order.style.display = "none";
+        div_ins.style.display = "none";
     } else {
         div_menu.style.display = "none";
         div_ins.style.display = "none";
@@ -188,8 +187,10 @@ function viewMenuControl() {
 }
 function viewInsertProduct() {
     var div_ins = document.getElementById("InsertProduct");
+    var div_menu = document.getElementById("MenuList");
     if (div_ins.style.display === "none") {
         div_ins.style.display = "block";
+        div_menu.style.display = "none";
     } else {
         div_ins.style.display = "none";
     }
