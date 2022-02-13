@@ -48,32 +48,97 @@ def editprofile():
         localname = form.localname.data
         piva = form.piva.data
 
+        print(password)
+
+
         if current_user.type == 0 :
-            utente = cliente.find_one(current_user['Email'])
-            if name is None :
-                utente = cliente.update({'Name': utente['Name']}, {"$set": name})
-
-
-
-
-
-
-
-
-
-
-
+            utente = cliente.find_one({"Email" : current_user.Email})
+            if name is not "" :
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Name": name}})
+            if surname is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Surname": surname}})
+            if street is not "":
+               cliente.update_one({'Email': utente['Email']}, {"$set": {"Street": street}})
+            if city is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"City": city}})
+            if province is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Province": province}})
+            if date is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Birthday": date}})
+            if gender is not None:
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Gender": gender}})
+            if telephone is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"PhoneNumber": telephone}})
+            if taxcode is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"TaxCode": taxcode}})
+            if email is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Email": email}})
+            if password is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Password": password}})
+        if current_user.type == 1 :
+            utente = cliente.find_one({"Email" : current_user.Email})
+            if name is not "" :
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Name": name}})
+            if surname is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Surname": surname}})
+            if street is not "":
+               cliente.update_one({'Email': utente['Email']}, {"$set": {"Street": street}})
+            if city is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"City": city}})
+            if province is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Province": province}})
+            if date is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Birthday": date}})
+            if gender is not None:
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Gender": gender}})
+            if telephone is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"PhoneNumber": telephone}})
+            if taxcode is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"TaxCode": taxcode}})
+            if email is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Email": email}})
+            if password is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Password": password}})
+            if id is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"ID": id}})
+            if iban is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"IBAN": iban}})
+        if current_user.type == 2:
+            utente = cliente.find_one({"Email": current_user.Email})
+            if name is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Name": name}})
+            if surname is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Surname": surname}})
+            if street is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Street": street}})
+            if city is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"City": city}})
+            if province is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Province": province}})
+            if date is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Birthday": date}})
+            if gender is not None:
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Gender": gender}})
+            if telephone is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"PhoneNumber": telephone}})
+            if taxcode is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"TaxCode": taxcode}})
+            if email is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Email": email}})
+            if password is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"Password": password}})
+            if id is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"ID": id}})
+            if iban is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"IBAN": iban}})
+            if piva is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"IVA": piva}})
+            if localname is not "":
+                cliente.update_one({'Email': utente['Email']}, {"$set": {"LocalName": localname}})
 
 
     return render_template('editprofile.html' , form=form)
 
-
-
-
-
-
-
-    return render_template('editprofile.html')
 
 @views.route("/riderindex")
 @login_required

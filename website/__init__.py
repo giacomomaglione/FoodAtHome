@@ -9,7 +9,7 @@ rider = database.Database.DATABASE["Rider"]
 negozio = database.Database.DATABASE["Store"]
 
 login = LoginManager()
-login.login_view = 'login'
+login.login_view = 'auth.login'
 
 def create_app():
     app = Flask(__name__)
