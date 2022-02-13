@@ -7,6 +7,7 @@ database.Database.initialize()
 cliente = database.Database.DATABASE["Customer"]
 rider = database.Database.DATABASE["Rider"]
 negozio = database.Database.DATABASE["Store"]
+prodotto = database.Database.DATABASE["Product"]
 
 login = LoginManager()
 login.login_view = 'auth.login'

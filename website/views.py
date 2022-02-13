@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, current_user, login_user
 from .form import EditProfile
-from . import cliente, rider, negozio
+from . import cliente, rider, negozio, prodotto
 from .models import Cliente, Rider, Local
 from . import login
 
@@ -41,7 +41,7 @@ def editprofile():
 
         if current_user.type == 0 :
             utente = cliente.find_one({"Email" : current_user.Email})
-            if name is not "" :
+            if name != "" :
                 cliente.update_one({'Email': utente['Email']}, {"$set": {"Name": name}})
                 form.name.data=""
             if surname != "":
@@ -91,40 +91,40 @@ def editprofile():
                 rider.update_one({'Email': utente['Email']}, {"$set": {"Password": password}})
             if id != "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"ID": id}})
-            if iban !=  "":
+            if iban != "":
                 rider.update_one({'Email': utente['Email']}, {"$set": {"IBAN": iban}})
 
         if current_user.type == 2:
             utente = negozio.find_one({"Email": current_user.Email})
-            if name is not "":
+            if name != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"Name": name}})
-            if surname is not "":
+            if surname != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"Surname": surname}})
-            if street is not "":
+            if street != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"Street": street}})
-            if city is not "":
+            if city != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"City": city}})
-            if province is not "":
+            if province != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"Province": province}})
-            if date is not "":
+            if date != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"Birthday": date}})
-            if gender is not None:
+            if gender != None:
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"Gender": gender}})
-            if telephone is not "":
+            if telephone != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"PhoneNumber": telephone}})
-            if taxcode is not "":
+            if taxcode != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"TaxCode": taxcode}})
-            if email is not "":
+            if email != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"Email": email}})
-            if password is not "":
+            if password != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"Password": password}})
-            if id is not "":
+            if id != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"ID": id}})
-            if iban is not "":
+            if iban != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"IBAN": iban}})
-            if piva is not "":
+            if piva != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"IVA": piva}})
-            if localname is not "":
+            if localname != "":
                 negozio.update_one({'Email': utente['Email']}, {"$set": {"LocalName": localname}})
     return render_template('editprofile.html' , form=form)
 
@@ -132,15 +132,26 @@ def editprofile():
 @views.route("/riderindex")
 @login_required
 def riderindex():
+    if current_user.type != 1:
+        return redirect(url_for('views.index'))
     return render_template('riderindex.html')
 
 
-@views.route("/localindex")
+@views.route("/localindex", methods=['GET', 'POST'])
 @login_required
 def localindex():
-    return render_template('localindex.html')
+    if current_user.type != 2:
+        return redirect(url_for('views.index'))
+
+    for product in prodotto.find({"Store": current_user.Email}):
+       print(product)
+
+
+    return render_template('localindex.html', product=product)
 
 @views.route("/customerindex")
 @login_required
 def customerindex():
+    if current_user.type != 0:
+        return redirect(url_for('views.index'))
     return render_template('customerindex.html')
