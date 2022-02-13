@@ -4,8 +4,9 @@ from flask_wtf import FlaskForm
 from flask_login import LoginManager
 
 class Cliente():
-    def __init__(self, Email):
+    def __init__(self, Email, type):
         self.Email = Email
+        self.type = type
 
     @staticmethod
     def is_authenticated(self):
@@ -24,9 +25,9 @@ class Cliente():
 
 
 class Rider():
-    def __init__(self, username):
-        self.username = username
-
+    def __init__(self, Email, type):
+        self.Email = Email
+        self.type = type
     @staticmethod
     def is_authenticated():
         return True
@@ -40,37 +41,24 @@ class Rider():
         return False
 
     def get_id(self):
-        return self.username
+        return self.Email
 
-    @login.user_loader
-    def load_user(username):
-        u = cliente.find_one({"Name": username})
-        if not u:
-            return None
-        return cliente(username=u['username'])
 
 class Local():
-        def __init__(self, username):
-            self.username = username
+    def __init__(self, Email, type):
+        self.Email = Email
+        self.type = type
+    @staticmethod
+    def is_authenticated():
+        return True
 
-        @staticmethod
-        def is_authenticated():
-            return True
+    @staticmethod
+    def is_active():
+        return True
 
-        @staticmethod
-        def is_active():
-            return True
+    @staticmethod
+    def is_anonymous():
+        return False
 
-        @staticmethod
-        def is_anonymous():
-            return False
-
-        def get_id(self):
-            return self.username
-
-        @login.user_loader
-        def load_user(username):
-            u = cliente.find_one({"Name": username})
-            if not u:
-                return None
-            return cliente(username=u['username'])
+    def get_id(self):
+        return self.Email

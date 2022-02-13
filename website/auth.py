@@ -13,9 +13,19 @@ auth = Blueprint('auth', __name__)
 @login.user_loader
 def load_user(Email):
     u = cliente.find_one({"Email": Email})
-    if not u:
-        return None
-    return Cliente(Email=u['Email'])
+    if u:
+        return Cliente(Email=u['Email'], type=0)
+    else:
+        u = rider.find_one({"Email": Email})
+        if u:
+            return Rider(Email=u['Email'],  type=1)
+        else:
+            u = negozio.find_one({"Email": Email})
+            if u:
+                return Local(Email=u['Email'],  type=2)
+            else:
+                return None
+
 
 
 @auth.route("/login", methods=['GET', 'POST'])
@@ -29,29 +39,55 @@ def login():
 
     if form.validate_on_submit():
         user = cliente.find_one({"Email": formemail})
-
+        if user:
+            if user["Password"] == formpassword:
+                flash("Accesso Eseguito")
+                user_obj = Cliente(Email=user['Email'], type=0)
+                login_user(user_obj, True)
+                next_page = request.args.get('next')
+                if not next_page or url_parse(next_page).netloc != '':
+                    next_page = url_for('views.customerindex')
+                return redirect(next_page)
+            else:
+                flash("Password Errata", category='error')
         if not user:
-            flash("Email non registrata", category='error')
-
-        elif user["Password"] == formpassword:
-            flash("Accesso Eseguito")
-            user_obj = Cliente(Email=user['Email'])
-            login_user(user_obj, True)
-            next_page = request.args.get('next')
-            if not next_page or url_parse(next_page).netloc != '':
-                next_page = url_for('views.customerindex')
-            return redirect(next_page)
-        else:
-            flash("Password Errata", category='error')
+            user = rider.find_one({"Email": formemail})
+            if user:
+                if user["Password"] == formpassword:
+                    flash("Accesso Eseguito")
+                    user_obj = Rider(Email=user['Email'], type=1)
+                    login_user(user_obj, True)
+                    next_page = request.args.get('next')
+                    if not next_page or url_parse(next_page).netloc != '':
+                        next_page = url_for('views.riderindex')
+                    return redirect(next_page)
+                else:
+                    flash("Password Errata", category='error')
+        if not user:
+            user = negozio.find_one({"Email": formemail})
+            if user:
+                if user["Password"] == formpassword:
+                    flash("Accesso Eseguito")
+                    user_obj = Local(Email=user['Email'], type=2)
+                    login_user(user_obj, True)
+                    next_page = request.args.get('next')
+                    if not next_page or url_parse(next_page).netloc != '':
+                        next_page = url_for('views.localindex')
+                    return redirect(next_page)
+                else:
+                    flash("Password Errata", category='error')
+            else:
+                flash("Email non registrata", category='error')
 
     return render_template('login.html', form = form)
+
 
 
 @auth.route("/logout")
 @login_required
 def logout():
     logout_user()
-    flash('You have been logged out.')
+    flash('Sei stato disconnesso.')
     return redirect(url_for('views.index'))
 
 
@@ -97,34 +133,6 @@ def signin():
     return render_template('signin.html' , form=form)
 
 
-@auth.route("/loginrider", methods=['GET', 'POST'])
-def loginrider():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = Login()
-
-    formemail = form.email.data
-    formpassword = form.password.data
-
-    if form.validate_on_submit():
-        user = rider.find_one({"Email": formemail})
-
-        if not user:
-            flash("Email non registrata", category='error')
-
-        elif user["Password"] == formpassword:
-            flash("Accesso Eseguito")
-            user_obj = Rider(username=user['Email'])
-            login_user(user_obj)
-            next_page = request.args.get('next')
-            if not next_page or url_parse(next_page).netloc != '':
-                next_page = url_for('views.riderindex')
-            return redirect(next_page)
-        else:
-            flash("Password Errata", category='error')
-
-    return render_template('loginrider.html', form = form)
-
 
 @auth.route("/signinrider", methods=['GET', 'POST'])
 def signinrider():
@@ -169,33 +177,6 @@ def signinrider():
 
     return render_template('signinrider.html' , form=form)
 
-@auth.route("/loginstore", methods=['GET', 'POST'])
-def loginlocal():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = Login()
-
-    formemail = form.email.data
-    formpassword = form.password.data
-
-    if form.validate_on_submit():
-        user = negozio.find_one({"Email": formemail})
-
-        if not user:
-            flash("Email non registrata", category='error')
-
-        elif user["Password"] == formpassword:
-            flash("Accesso Eseguito")
-            user_obj = Local(username=user['Email'])
-            login_user(user_obj)
-            next_page = request.args.get('next')
-            if not next_page or url_parse(next_page).netloc != '':
-                next_page = url_for('views.localindex')
-            return redirect(next_page)
-        else:
-            flash("Password Errata", category='error')
-
-    return render_template('loginstore.html', form = form)
 
 @auth.route("/signinlocal", methods=['GET', 'POST'])
 def signinlocal():
