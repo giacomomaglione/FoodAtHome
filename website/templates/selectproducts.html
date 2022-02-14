@@ -1,8 +1,42 @@
 {% extends "Template.html" %}
-{% block title %} <title>Crea ordine</title>{% endblock %}
+{% block title %} <title>Seleziona Prodotti</title>{% endblock %}
 {% block content %}
 {{ super() }}
+<!--Nuovo ordine-->
+<div class="container my-5" id="NewOrder">
+    <br><br>
+    <div class="container">
+        <div class=" " id="HeadLocal">
+            <div class="row centrato">
+                <div class="centrato buttonsearch fw-bold my-3" style="font-size: 200%"><b>Menù</b></div>
+            </div>
+            <br>
+            <div class="row centrato">
+                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><b>Nome</b></div>
+                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><b>Descrizione</b></div>
+                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">Prezzo</div>
+                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">Immagine</div>
+            </div>
+            <br>
+            <hr>
+        </div>
+        <div>
+            <div class="row centrato">
 
+            </div>
+
+           {% for product in list %}
+            <div class="row centrato">
+                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">{{ product['Name'] }}</div>
+                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><b>{{ product['Description'] }}</b></div>
+                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><b>{{ product['Price'] }}</b></div>
+                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><a href="{{ product['Image'] }}"> <button type="button" class="buttonsearch fw-bold my-3" onclick="">Seleziona</button></a></div>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
 
 
