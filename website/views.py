@@ -207,6 +207,13 @@ def createorder():
     print(loc)
     return render_template('createorder.html', list = loc)
 
+
+@views.route("/selectproducts", methods=['GET', 'POST'])
+@login_required
+def selectproducts():
+
+    return render_template('selectproducts.html')
+
 #@views.route("/orderhistory", methods=['GET', 'POST'])
 #@login_required
 #def orderhistory(query):
