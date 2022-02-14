@@ -148,8 +148,8 @@ def localindex():
     for prod in prod_query:
         list.append(prod)
         #print(prod)
-    if method == 'POST':
         form = AddProduct()
+    if request.method == 'POST':
         print("Prendo dal form")
         nome = form.name.data
         description = form.description.data
