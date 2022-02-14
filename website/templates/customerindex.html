@@ -1,5 +1,5 @@
 {% extends "Template.html" %}
-{% block title %} <title>Accedi</title>{% endblock %}
+{% block title %} <title>Food@Home-Cliente</title>{% endblock %}
 {% block content %}
 {{ super() }}
 <!--Bottoni homepage-->
@@ -43,14 +43,12 @@
                     {{ form.province.label(class="form-label fw-bold ptwo")}}
                     {{ form.province(class="form-control", placeholder="Inserisci provincia")}}
                 </div>
+                <div class="mb-3 my-3 form-group centrato col-xs-1 col-sm-1 col-md-1 col-lg-1 ">
+                {{ form.submit(class="buttonsearch fw-bold my-3 ")}}
+                </div>
             </div>
-
-        <div class="mb-3 my-3 form-group centrato col-xs-1 col-sm-1 col-md-1 col-lg-1 ">
-            {{ form.submit(class="buttonsearch fw-bold my-3 ")}}
-        </div>
-            </Form>
+        </Form>
     </div>
-
     <br><br>
     <div class="container">
         <div class="hiddenmedium hiddensmall" id="HeadLocal">
@@ -77,17 +75,19 @@
                 display: none;
             }
             </style>
-
-
-            {%for p in list%}
             <div class="row centrato">
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">{{ p['Name'] }}</div>
+
+            </div>
+            <hr>
+           {% for p in list %}
+            <div class="row centrato">
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">{{ p['LocalName'] }}</div>
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="viewLocalMenu()">Seleziona</button></div>
             </div>
             <hr>
             {% endfor %}
-
+        </div>
         <div id="LocalMenu">
             <style>
             #LocalMenu{
@@ -197,6 +197,8 @@
                 <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Data</b></div>
             </div>
         </div>
+
+        {% for order in orderhistory %}
         <br>
         <hr>
         <br>
@@ -206,24 +208,7 @@
             <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">25€</div>
             <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10/10/2010</div>
         </div>
-        <br>
-        <hr>
-        <br>
-        <div class="row centrato">
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">McDonald's</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">panino,coca cola...</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">65€</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10/10/2010</div>
-        </div>
-        <br>
-        <hr>
-        <br>
-        <div class="row centrato">
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">McDonald's</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">panino,coca cola...</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10€</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10/10/2010</div>
-        </div>
+        {% endfor %}
 </div>
 {% block footer %}
 {% endblock %}
