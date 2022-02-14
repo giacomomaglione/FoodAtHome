@@ -4,10 +4,9 @@ from .form import EditProfile, AddProduct, NewAddress
 from . import cliente, rider, negozio, prodotto, ordine, prodottiordine
 from .models import Cliente, Rider, Local
 from . import login
-
+from flask import session
 
 views = Blueprint('views', __name__)
-
 
 @views.route("/")
 def index():
@@ -178,7 +177,7 @@ def customerindex():
         return redirect(url_for('views.index'))
     form = NewAddress()
 
-
+    localfound = []
 
 
    # queryhistory=ordine.find({"Customer" : current_user.Email})
@@ -189,19 +188,24 @@ def customerindex():
 
     if request.method=='POST':
         province = form.province.data
-        query = negozio.find({"Province" : province})
-        localfound = []
-        for prod in query:
-            localfound.append(prod)
-        print("entrato")
+        #query = negozio.find({"Province" : province})
+
+        #for prod in query:
+            #localfound.append(prod)
+        session['prov'] = province
         return redirect(url_for('views.createorder'))
     return render_template('customerindex.html', form=form)
 
 @views.route("/createorder", methods=['GET', 'POST'])
 @login_required
 def createorder():
+    loc = []
+    query = negozio.find({"Province" : session['prov']})
 
-    return render_template('createorder.html')
+    for local in query:
+        loc.append(local)
+    print(loc)
+    return render_template('createorder.html', list = loc)
 
 #@views.route("/orderhistory", methods=['GET', 'POST'])
 #@login_required
