@@ -11,6 +11,14 @@ views = Blueprint('views', __name__)
 
 @views.route("/")
 def index():
+    if current_user.type==0:
+        return redirect(url_for('views.customerindex'))
+    if current_user.type==1:
+        return redirect(url_for('views.riderindex'))
+    if current_user.type==2:
+        return redirect(url_for('views.localrindex'))
+
+
     return render_template('index.html')
 
 @views.route("/aboutus")
@@ -169,18 +177,20 @@ def customerindex():
     if current_user.type != 0:
         return redirect(url_for('views.index'))
     form=NewAddress()
+    localfound = []
     if request.method=='POST':
         print("sto nel post")
         province=form.province.data
         print(province)
         query=negozio.find({"Province" : province})
         print(query)
-        localfound = []
+
         for prod in query:
             print(localfound)
             localfound.append(prod)
 
     return render_template('customerindex.html', form=form, list=localfound)
+
 
 
 
