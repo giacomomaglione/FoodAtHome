@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user, login_user
 from .form import EditProfile, AddProduct, NewAddress
-from . import cliente, rider, negozio, prodotto
+from . import cliente, rider, negozio, prodotto, ordine, prodottiordine
 from .models import Cliente, Rider, Local
 from . import login
 
@@ -11,14 +11,14 @@ views = Blueprint('views', __name__)
 
 @views.route("/")
 def index():
+    if current_user.is_anonymous == True:
+        return render_template('index.html')
     if current_user.type==0:
         return redirect(url_for('views.customerindex'))
     if current_user.type==1:
         return redirect(url_for('views.riderindex'))
     if current_user.type==2:
         return redirect(url_for('views.localrindex'))
-
-
     return render_template('index.html')
 
 @views.route("/aboutus")
@@ -178,24 +178,22 @@ def customerindex():
         return redirect(url_for('views.index'))
     form=NewAddress()
     localfound = []
-    orderh
-    if request.method=='POST':
-        print("sto nel post")
-        province=form.province.data
-        print(province)
-        query=negozio.find({"Province" : province})
-        print(query)
 
+
+    orderhistory= []
+    queryhistory=ordine.find({"Customer" : current_user.Email})
+    for order in queryhistory:
+        print(orderhistory)
+        orderhistory.append(order)
+
+    if request.method=='POST':
+        province=form.province.data
+        query=negozio.find({"Province" : province})
         for prod in query:
-            print(localfound)
             localfound.append(prod)
 
-    return render_template('customerindex.html', form=form, list=localfound)
+    return render_template('customerindex.html', form=form, list=localfound, orderhistory=orderhistory)
 
-
-
-
-
-
-
-
+#@views.route("/customerindex", methods=['GET', 'POST'])
+#@login_required
+#def customerindex():
