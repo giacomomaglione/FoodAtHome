@@ -192,11 +192,17 @@ def createorder():
     return render_template('createorder.html', list = loc)
 
 
-@views.route("/selectproducts", methods=['GET', 'POST'])
+@views.route("/selectproducts$store=<store>", methods=['GET'])
 @login_required
-def selectproducts():
-
-    return render_template('selectproducts.html')
+def selectproducts(store):
+    print(store)
+    products = []
+    queryproducts = prodotto.find({"Store": store})
+    for prod in queryproducts:
+        products.append(prod)
+        print(prod)
+    print(products)
+    return render_template('selectproducts.html', store=store, list=products)
 
 @views.route("/orderhistory", methods=['GET', 'POST'])
 @login_required
