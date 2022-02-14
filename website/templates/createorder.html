@@ -5,14 +5,9 @@
 
 <!--Nuovo ordine-->
 <div class="container my-5" id="NewOrder">
-    <style>
-        #NewOrder{
-            display: none;
-        }
-    </style>
     <br><br>
     <div class="container">
-        <div class="hiddenmedium hiddensmall" id="HeadLocal">
+        <div class=" " id="HeadLocal">
             <div class="row centrato">
                 <div class="centrato buttonsearch fw-bold my-3" style="font-size: 200%"><b>Locali disponibili</b></div>
             </div>
@@ -29,107 +24,16 @@
             <div class="row centrato">
 
             </div>
-            <hr>
+
            {% for p in list %}
             <div class="row centrato">
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">{{ p['LocalName'] }}</div>
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="viewLocalMenu()">Seleziona</button></div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><a href="{{url_for('views.selectproducts')}}"> <button type="button" class="buttonsearch fw-bold my-3" onclick="">Seleziona</button></a></div>
             </div>
             <hr>
             {% endfor %}
         </div>
-        <div id="LocalMenu">
-            <style>
-            #LocalMenu{
-                display: none;
-            }
-            </style>
-
-<!--Carrello -->
-            <div class="centrato" id="Cart">
-                <style>
-                    #Cart{
-                        display: none;
-                    }
-                </style>
-                <br>
-                <div class="row centrato">
-                    <div class="centrato buttonsearch fw-bold my-3" style="font-size: 200%"><b>Carrello</b></div>
-                </div>
-                <br>
-                <div class="row centrato hiddenmedium hiddensmall">
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><b>Prodotto</b></div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><b>Quantità </b></div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><b>Prezzo </b></div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"></div>
-                </div>
-                <div class="row centrato">
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">Panino 1</div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">x2</div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">2€</div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="removeFromCart()">Rimuovi</button></div>
-                </div>
-                <div class="row centrato">
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">Panino 2</div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">x2</div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">2€</div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="removeFromCart()">Rimuovi</button></div>
-                </div>
-                <hr>
-                <div class="row centrato">
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"></div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"></div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><div><b>Prezzo Totale </b></div><b>5€ </b></div>
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="">Ordina</button></div>
-                </div>
-                <br>
-                <br>
-            </div>
-
-            <div class="centrato">
-                <button type="button" class="buttonsearch fw-bold my-3" onclick="viewAvaibleLocal()">Torna indietro</button>
-            </div>
-            <br>
-            <div class="row centrato">
-                <div class="centrato buttonsearch fw-bold my-3" style="font-size: 200%"><b>Menù</b></div>
-            </div>
-            <br>
-            <div class="row centrato hiddenmedium hiddensmall">
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><b>Nome </b></div>
-                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><b>Descrizione </b></div>
-                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><b>Immagine</b></div>
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><b>Prezzo </b></div>
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><b>Seleziona</b></div>
-            </div>
-            <hr>
-            <div class="row centrato">
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">Panino 1</div>
-                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione</div>
-                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">10€ </div>
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="addCart()">Aggiungi</button></div>
-            </div>
-            <hr>
-            <div class="row centrato">
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">Panino 1</div>
-                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione </div>
-                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">10€ </div>
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="addCart()">Aggiungi</button></div>
-            </div>
-            <hr>
-            <div class="row centrato">
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">Panino 1</div>
-                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione Descrizione</div>
-                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12">10€</div>
-                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="addCart()">Aggiungi</button></div>
-            </div>
-            <hr>
-
-        </div>
-        <br>
     </div>
 </div>
 
