@@ -32,7 +32,7 @@
             <div class="row centrato">
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">{{ p['LocalName'] }}</div>
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><a href="{{url_for('views.selectproducts')}}"> <button type="button" class="buttonsearch fw-bold my-3" onclick="">Seleziona</button></a></div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><a href="{{url_for('views.selectproducts',store=p['Email'])}}"> <button type="button" class="buttonsearch fw-bold my-3" onclick="">Seleziona</button></a></div>
             </div>
             <hr>
             {% endfor %}
