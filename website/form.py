@@ -90,4 +90,4 @@ class NewAddress(FlaskForm):
     street=StringField('Via',validators=[DataRequired()])
     city=StringField('Città' ,validators=[DataRequired()])
     province=StringField('Provincia' ,validators=[DataRequired()])
-    submit = SubmitField('Aggiungi')
+    submit = SubmitField('Cerca')

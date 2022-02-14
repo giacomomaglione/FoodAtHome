@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user, login_user
-from .form import EditProfile, AddProduct, New Address
+from .form import EditProfile, AddProduct, NewAddress
 from . import cliente, rider, negozio, prodotto
 from .models import Cliente, Rider, Local
 from . import login
@@ -151,7 +151,6 @@ def localindex():
         list.append(prod)
     form = AddProduct()
     if request.method == 'POST':
-        print("Prendo dal form")
         nome = form.name.data
         description = form.description.data
         price = form.price.data
@@ -164,21 +163,24 @@ def localindex():
 
 
 
-@views.route("/customerindex")
+@views.route("/customerindex", methods=['GET', 'POST'])
 @login_required
 def customerindex():
     if current_user.type != 0:
         return redirect(url_for('views.index'))
     form=NewAddress()
-    if request.method=='POST'
+    if request.method=='POST':
+        print("sto nel post")
         province=form.province.data
-        query=negozio.find_one({"Province" : province})
-        local = []
-        for locale in query:
-            local.append(locale)
+        print(province)
+        query=negozio.find({"Province" : province})
+        print(query)
+        localfound = []
+        for prod in query:
+            print(localfound)
+            localfound.append(prod)
 
-
-    return render_template('customerindex.html', form=form, list=list)
+    return render_template('customerindex.html', form=form, list=localfound)
 
 
 
