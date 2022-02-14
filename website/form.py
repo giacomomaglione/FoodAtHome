@@ -79,4 +79,8 @@ class EditProfile(FlaskForm):
     piva = StringField('Piva')
 
 
-#class AddProduct(FlaskForm):
+class AddProduct(FlaskForm):
+    name=StringField('Nome prodotto',validators=[DataRequired()])
+    description=StringField('Descrizione prodotto' ,validators=[DataRequired()])
+    price=StringField('Prezzo' ,validators=[DataRequired()])
+    submit = SubmitField('Aggiungi')
