@@ -165,7 +165,7 @@ def localindex():
         if  nome != "" and description!= "" and price!= "":
             newproduct = {"Name": nome, "Description": description, "Price": price, "Store": current_user.Email}
             prodotto.insert_one(newproduct)
-            flash("Prodotto aggiunto al menù")
+            flash("Prodotto aggiunto al menÃ¹")
 
     return render_template('localindex.html', list=list, form=form)
 
@@ -177,23 +177,40 @@ def customerindex():
     if current_user.type != 0:
         return redirect(url_for('views.index'))
     form=NewAddress()
-    localfound = []
 
 
-    orderhistory= []
-    queryhistory=ordine.find({"Customer" : current_user.Email})
-    for order in queryhistory:
-        print(orderhistory)
-        orderhistory.append(order)
+
+
+   # queryhistory=ordine.find({"Customer" : current_user.Email})
+    #for order in queryhistory:
+      # print(orderhistory)
+       # orderhistory.append(order)
+
+
+
+
 
     if request.method=='POST':
         province=form.province.data
         query=negozio.find({"Province" : province})
+        localfound = []
         for prod in query:
             localfound.append(prod)
+        return render_template('createorder.html', localfound=localfound)
 
-    return render_template('customerindex.html', form=form, list=localfound, orderhistory=orderhistory)
+    return render_template('customerindex.html', form=form)
 
-#@views.route("/customerindex", methods=['GET', 'POST'])
+@views.route("/createorder", methods=['GET', 'POST'])
+@login_required
+def createorder(localfound):
+    print(localfound)
+
+    return render_template('createorder.html', list=localfound)
+
+#@views.route("/orderhistory", methods=['GET', 'POST'])
 #@login_required
-#def customerindex():
+#def orderhistory(query):
+ #   for order in queryhistory:
+     #   print(orderhistory)
+       # orderhistory.append(order)
+ #   return render_template('orderhistory.html', list=localfound)
