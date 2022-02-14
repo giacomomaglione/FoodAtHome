@@ -84,3 +84,10 @@ class AddProduct(FlaskForm):
     description=StringField('Descrizione prodotto' ,validators=[DataRequired()])
     price=StringField('Prezzo' ,validators=[DataRequired()])
     submit = SubmitField('Aggiungi')
+
+
+class NewAddress(FlaskForm):
+    street=StringField('Via',validators=[DataRequired()])
+    city=StringField('Città' ,validators=[DataRequired()])
+    province=StringField('Provincia' ,validators=[DataRequired()])
+    submit = SubmitField('Aggiungi')

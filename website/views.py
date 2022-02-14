@@ -129,6 +129,8 @@ def editprofile():
     return render_template('editprofile.html' , form=form)
 
 
+
+
 @views.route("/riderindex")
 @login_required
 def riderindex():
@@ -147,7 +149,9 @@ def localindex():
     list = []
     for prod in prod_query:
         list.append(prod)
-        #print(prod)
+
+
+
         form = AddProduct()
     if request.method == 'POST':
         print("Prendo dal form")
@@ -156,12 +160,12 @@ def localindex():
         price = form.price.data
         if  nome != "" and description!= "" and price!= "":
             newproduct = {"Name": nome, "Description": description, "Price": price, "Store": current_user.Email}
-            print("dentro if")
-            print(newproduct)
             prodotto.insert_one(newproduct)
             flash("Prodotto aggiunto al menù")
 
     return render_template('localindex.html', list=list, form=form)
+
+
 
 @views.route("/customerindex")
 @login_required
@@ -169,3 +173,7 @@ def customerindex():
     if current_user.type != 0:
         return redirect(url_for('views.index'))
     return render_template('customerindex.html')
+
+
+
+
