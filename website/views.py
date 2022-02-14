@@ -179,13 +179,6 @@ def customerindex():
 
     localfound = []
 
-
-   # queryhistory=ordine.find({"Customer" : current_user.Email})
-    #for order in queryhistory:
-      # print(orderhistory)
-       # orderhistory.append(order)
-
-
     if request.method=='POST':
         province = form.province.data
         #query = negozio.find({"Province" : province})
@@ -214,10 +207,13 @@ def selectproducts():
 
     return render_template('selectproducts.html')
 
-#@views.route("/orderhistory", methods=['GET', 'POST'])
-#@login_required
-#def orderhistory(query):
- #   for order in queryhistory:
-     #   print(orderhistory)
-       # orderhistory.append(order)
- #   return render_template('orderhistory.html', list=localfound)
+@views.route("/orderhistory", methods=['GET', 'POST'])
+@login_required
+def orderhistory():
+    historylist = []
+    queryhistory = ordine.find({"Customer" : current_user.Email})
+    for order in queryhistory:
+        print(orderhistory)
+        orderhistory.append(order)
+
+    return render_template('orderhistory.html', list=historylist)
