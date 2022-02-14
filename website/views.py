@@ -213,7 +213,7 @@ def orderhistory():
     historylist = []
     queryhistory = ordine.find({"Customer" : current_user.Email})
     for order in queryhistory:
-        print(orderhistory)
-        orderhistory.append(order)
+        historylist.append(order)
+    print(historylist)
 
     return render_template('orderhistory.html', list=historylist)
