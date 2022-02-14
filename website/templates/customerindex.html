@@ -44,11 +44,13 @@
                     {{ form.province(class="form-control", placeholder="Inserisci provincia")}}
                 </div>
             </div>
-        </Form>
+
         <div class="mb-3 my-3 form-group centrato col-xs-1 col-sm-1 col-md-1 col-lg-1 ">
-            <button type="button" class="buttonsearch fw-bold my-3 " onclick="viewAvaibleLocal()">Cerca</button>
+            {{ form.submit(class="buttonsearch fw-bold my-3 ")}}
         </div>
+            </Form>
     </div>
+
     <br><br>
     <div class="container">
         <div class="hiddenmedium hiddensmall" id="HeadLocal">
@@ -75,25 +77,17 @@
                 display: none;
             }
             </style>
+
+
+            {%for p in list%}
             <div class="row centrato">
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">McDonald's</div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">{{ p['Name'] }}</div>
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="viewLocalMenu()">Seleziona</button></div>
             </div>
             <hr>
-            <div class="row centrato">
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Burger King</div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="viewLocalMenu()">Seleziona</button></div>
-            </div>
-            <hr>
-            <div class="row centrato">
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Pizzeria Vesuvio</div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="viewLocalMenu()">Seleziona</button></div>
-            </div>
-            <hr>
-        </div>
+            {% endfor %}
+
         <div id="LocalMenu">
             <style>
             #LocalMenu{
