@@ -1,99 +1,26 @@
 {% extends "Template.html" %}
-{% block title %} <title>Accedi</title>{% endblock %}
+{% block title %} <title>Food@Home-Cliente</title>{% endblock %}
 {% block content %}
 {{ super() }}
 <!--Bottoni homepage-->
 <div class="container my-5">
     <div class="row">
         <div class="pfive centrato col-sm-5 col-md-4 col-lg-3" onclick="viewNewOrder()">
-            <p class="text-center fw-bold">Crea un ordine</p>
+            <p class="text-center  access fw-bold">Crea un ordine</p>
         </div>
         <div class="col-xs-12 mobilestacco">
             <br>
         </div>
-        <div class="pfive centrato col-sm-5 col-md-4 col-lg-3" onclick="viewHistoryOrder()">
-            <p class="text-center fw-bold">Storico ordini</p>
+        <div class="pfive centrato col-sm-5 col-md-4 col-lg-3">
+            <a class="access" href="{{url_for('views.orderhistory')}}">
+                <p class="text-center fw-bold">Storico ordini
+                </p>
+            </a>
         </div>
     </div>
 </div>
 
-<!--Nuovo ordine-->
-<div class="container my-5" id="NewOrder">
-    <style>
-        #NewOrder{
-            display: none;
-        }
-    </style>
-    <div class="row">
-        <div class="col-xs-1 col-sm-1 col-md-3 col-lg-3">
 
-        </div>
-        <Form method="POST">
-            <div class="row centrato">
-                <div class="mb-3 my-3 form-group col-xs-12 col-sm-8 col-md-5 col-lg-4">
-                    {{ form.hidden_tag() }}
-                    {{ form.street.label(class="form-label fw-bold ptwo")}}
-                    {{ form.street(class="form-control", placeholder="Inserisci via")}}
-                </div>
-                <div class="mb-3 my-3 form-group col-xs-12 col-sm-8 col-md-5 col-lg-4">
-                    {{ form.city.label(class="form-label fw-bold ptwo")}}
-                    {{ form.city(class="form-control", placeholder="Inserisci città")}}
-                </div>
-                <div class="mb-3 my-3 form-group col-xs-12 col-sm-8 col-md-5 col-lg-4">
-                    {{ form.province.label(class="form-label fw-bold ptwo")}}
-                    {{ form.province(class="form-control", placeholder="Inserisci provincia")}}
-                </div>
-            </div>
-
-        <div class="mb-3 my-3 form-group centrato col-xs-1 col-sm-1 col-md-1 col-lg-1 ">
-            {{ form.submit(class="buttonsearch fw-bold my-3 ")}}
-        </div>
-            </Form>
-    </div>
-
-    <br><br>
-    <div class="container">
-        <div class="hiddenmedium hiddensmall" id="HeadLocal">
-            <style>
-            #HeadLocal{
-                display: none;
-            }
-            </style>
-            <div class="row centrato">
-                <div class="centrato buttonsearch fw-bold my-3" style="font-size: 200%"><b>Locali disponibili</b></div>
-            </div>
-            <br>
-            <div class="row centrato">
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Nome locale</b></div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Immagine</b></div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"></div>
-            </div>
-            <br>
-            <hr>
-        </div>
-        <div id="AvaibleLocal">
-            <style>
-            #AvaibleLocal{
-                display: none;
-            }
-            </style>
-
-
-            {%for p in list%}
-            <div class="row centrato">
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">{{ p['Name'] }}</div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="viewLocalMenu()">Seleziona</button></div>
-            </div>
-            <hr>
-            {% endfor %}
-
-        <div id="LocalMenu">
-            <style>
-            #LocalMenu{
-                display: none;
-            }
-            </style>
 
 <!--Carrello -->
             <div class="centrato" id="Cart">
@@ -182,49 +109,7 @@
     </div>
 </div>
 
-<!--- Storico ordini-->
-<div class="container my-5" id="HistoryOrder">
-    <style>
-        #HistoryOrder{
-            display: none;
-        }
-    </style>
-    <div class="hiddenmedium hiddensmall">
-            <div class="row centrato">
-                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Locale</b></div>
-                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Descrizione</b></div>
-                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Prezzo</b></div>
-                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Data</b></div>
-            </div>
-        </div>
-        <br>
-        <hr>
-        <br>
-        <div class="row centrato">
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">McDonald's</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">panino,coca cola...</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">25€</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10/10/2010</div>
-        </div>
-        <br>
-        <hr>
-        <br>
-        <div class="row centrato">
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">McDonald's</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">panino,coca cola...</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">65€</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10/10/2010</div>
-        </div>
-        <br>
-        <hr>
-        <br>
-        <div class="row centrato">
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">McDonald's</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">panino,coca cola...</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10€</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10/10/2010</div>
-        </div>
-</div>
+
 {% block footer %}
 {% endblock %}
 {% endblock %}
