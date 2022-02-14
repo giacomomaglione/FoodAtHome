@@ -17,7 +17,7 @@ def index():
     if current_user.type==1:
         return redirect(url_for('views.riderindex'))
     if current_user.type==2:
-        return redirect(url_for('views.localrindex'))
+        return redirect(url_for('views.localindex'))
     return render_template('index.html')
 
 @views.route("/aboutus")
@@ -164,10 +164,9 @@ def localindex():
         if  nome != "" and description!= "" and price!= "":
             newproduct = {"Name": nome, "Description": description, "Price": price, "Store": current_user.Email}
             prodotto.insert_one(newproduct)
-            flash("Prodotto aggiunto al menÃ¹")
+            flash("Prodotto aggiunto al menù")
 
     return render_template('localindex.html', list=list, form=form)
-
 
 
 @views.route("/customerindex", methods=['GET', 'POST'])
@@ -176,15 +175,8 @@ def customerindex():
     if current_user.type != 0:
         return redirect(url_for('views.index'))
     form = NewAddress()
-
-    localfound = []
-
     if request.method=='POST':
         province = form.province.data
-        #query = negozio.find({"Province" : province})
-
-        #for prod in query:
-            #localfound.append(prod)
         session['prov'] = province
         return redirect(url_for('views.createorder'))
     return render_template('customerindex.html', form=form)
@@ -194,10 +186,9 @@ def customerindex():
 def createorder():
     loc = []
     query = negozio.find({"Province" : session['prov']})
-
     for local in query:
         loc.append(local)
-    print(loc)
+    #print(loc)
     return render_template('createorder.html', list = loc)
 
 
@@ -214,6 +205,5 @@ def orderhistory():
     queryhistory = ordine.find({"Customer" : current_user.Email})
     for order in queryhistory:
         historylist.append(order)
-    print(historylist)
-
+    #print(historylist)
     return render_template('orderhistory.html', list=historylist)
