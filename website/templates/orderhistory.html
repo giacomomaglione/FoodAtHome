@@ -5,31 +5,26 @@
 
 <!--- Storico ordini-->
 <div class="container my-5" id="HistoryOrder">
-    <style>
-        #HistoryOrder{
-            display: none;
-        }
-    </style>
-    <div class="hiddenmedium hiddensmall">
-            <div class="row centrato">
-                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Locale</b></div>
-                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Descrizione</b></div>
-                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Prezzo</b></div>
-                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Data</b></div>
-            </div>
-        </div>
-
-        {% for order in orderhistory %}
-        <br>
-        <hr>
-        <br>
+    <div>
         <div class="row centrato">
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">McDonald's</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">panino,coca cola...</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">25€</div>
-            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">10/10/2010</div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Locale</b></div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Stato</b></div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Prezzo</b></div>
+            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12"><b>Data</b></div>
         </div>
-        {% endfor %}
+    </div>
+
+    {% for order in list %}
+    <br>
+    <hr>
+    <br>
+    <div class="row centrato">
+        <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">{{ order['Rider'] }}</div>
+        <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">{{ order['Status'] }}</div>
+        <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">{{ order['Price'] }}€</div>
+        <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">{{ order['Date'] }}</div>
+    </div>
+    {% endfor %}
 </div>
 
 {% block footer %}
