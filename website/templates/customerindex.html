@@ -29,22 +29,24 @@
 
         </div>
         <Form method="POST">
-        <div class="mb-3 my-3 form-group col-xs-12 col-sm-8 col-md-5 col-lg-5">
-            {{ form.hidden_tag() }}
-            {{ form.street.label(class="form-label fw-bold ptwo")}}
-            {{ form.street(class="form-control", placeholder="Via"))}}
-            {{ form.city.label()}}
-            {{ form.city()}}
-            {{ form.province.label()}}
-            {{ form.province()}}
-            <input type="name" class="form-control" id="Name" name="Name" placeholder="Inserisci un indirizzo">
-        </div>
+            <div class="row centrato">
+                <div class="mb-3 my-3 form-group col-xs-12 col-sm-8 col-md-5 col-lg-4">
+                    {{ form.hidden_tag() }}
+                    {{ form.street.label(class="form-label fw-bold ptwo")}}
+                    {{ form.street(class="form-control", placeholder="Inserisci via")}}
+                </div>
+                <div class="mb-3 my-3 form-group col-xs-12 col-sm-8 col-md-5 col-lg-4">
+                    {{ form.city.label(class="form-label fw-bold ptwo")}}
+                    {{ form.city(class="form-control", placeholder="Inserisci città")}}
+                </div>
+                <div class="mb-3 my-3 form-group col-xs-12 col-sm-8 col-md-5 col-lg-4">
+                    {{ form.province.label(class="form-label fw-bold ptwo")}}
+                    {{ form.province(class="form-control", placeholder="Inserisci provincia")}}
+                </div>
+            </div>
         </Form>
         <div class="mb-3 my-3 form-group centrato col-xs-1 col-sm-1 col-md-1 col-lg-1 ">
             <button type="button" class="buttonsearch fw-bold my-3 " onclick="viewAvaibleLocal()">Cerca</button>
-        </div>
-        <div class="col-xs-1 col-sm-1 col-md-3 col-lg-3">
-
         </div>
     </div>
     <br><br>
