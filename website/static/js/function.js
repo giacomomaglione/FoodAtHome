@@ -115,15 +115,9 @@ function upperCase() {
 <!--Controlli Cliente -->
 function viewNewOrder() {
     var div_new = document.getElementById("NewOrder");
-    var div_ava = document.getElementById("AvaibleLocal");
-    var div_hea = document.getElementById("HeadLocal");
-    div_hea.style.display = "none";
-    var div_his = document.getElementById("HistoryOrder");
     if (div_new.style.display === "none") {
         div_new.style.display = "block";
-        div_his.style.display = "none";
     } else {
-        div_ava.style.display= "none";
         div_new.style.display = "none";
     }
 }
