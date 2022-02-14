@@ -6,6 +6,11 @@
     {% if current_user.is_authenticated %}
 
     {% if current_user.type ==  2 %}
+<div class="container my-5 ">
+     <div class="row centrato col-xs-2 col-sm-3 col-md-2 col-lg-2">
+        <button class="buttonsearch fw-bold my-3 " onclick="history.back()">indietro</button>
+     </div>
+</div>
         <div class="container formlog my-3 ">
 
             <div class="row">
@@ -108,6 +113,11 @@
 
     {%endif%}
     {% if current_user.type==  1 %}
+<div class="container my-5 ">
+     <div class="row centrato col-xs-2 col-sm-3 col-md-2 col-lg-2">
+        <button class="buttonsearch fw-bold my-3 " onclick="history.back()">indietro</button>
+     </div>
+</div>
  <div class="container formlog my-3 ">
 
     <div class="row">
@@ -198,8 +208,12 @@
 
     {%endif%}
     {% if current_user.type==  0 %}
+     <div class="container my-5 ">
+         <div class="row centrato col-xs-2 col-sm-3 col-md-2 col-lg-2">
+            <button class="buttonsearch fw-bold my-3 " onclick="history.back()">indietro</button>
+         </div>
+     </div>
        <div class="container formlog my-3 ">
-
     <div class="row">
         <div class="col-3">
 
@@ -275,4 +289,3 @@
 {% block footer %}
 {% endblock %}
 {%endblock%}
-
