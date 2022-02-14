@@ -1,0 +1,15 @@
+{
+  "name": "Food@Home",
+  "short_name": "F@H",
+  "lang": "it-IT",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "blue",
+  "theme_color": "blue",
+  "icons" : [
+      {
+        "src": "../static/img/logo5.png",
+        "sizes": "550x550",
+        "type": "image/png"
+      }]
+}
