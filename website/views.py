@@ -176,7 +176,7 @@ def localindex():
 def customerindex():
     if current_user.type != 0:
         return redirect(url_for('views.index'))
-    form=NewAddress()
+    form = NewAddress()
 
 
 
@@ -187,25 +187,21 @@ def customerindex():
        # orderhistory.append(order)
 
 
-
-
-
     if request.method=='POST':
-        province=form.province.data
-        query=negozio.find({"Province" : province})
+        province = form.province.data
+        query = negozio.find({"Province" : province})
         localfound = []
         for prod in query:
             localfound.append(prod)
-        return render_template('createorder.html', localfound=localfound)
-
+        print("entrato")
+        return redirect(url_for('views.createorder'))
     return render_template('customerindex.html', form=form)
 
 @views.route("/createorder", methods=['GET', 'POST'])
 @login_required
-def createorder(localfound):
-    print(localfound)
+def createorder():
 
-    return render_template('createorder.html', list=localfound)
+    return render_template('createorder.html')
 
 #@views.route("/orderhistory", methods=['GET', 'POST'])
 #@login_required
