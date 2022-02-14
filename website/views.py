@@ -178,6 +178,7 @@ def customerindex():
         return redirect(url_for('views.index'))
     form=NewAddress()
     localfound = []
+    orderh
     if request.method=='POST':
         print("sto nel post")
         province=form.province.data
@@ -190,6 +191,9 @@ def customerindex():
             localfound.append(prod)
 
     return render_template('customerindex.html', form=form, list=localfound)
+
+
+
 
 
 
