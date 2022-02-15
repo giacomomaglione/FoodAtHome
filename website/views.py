@@ -201,7 +201,6 @@ def selectproducts(store):
     queryproducts = prodotto.find({"Store": store})
     for prod in queryproducts:
         products.append(prod)
-
     form=AddToCart()
     all_total_price= 0
     all_total_quantity =0
@@ -222,5 +221,8 @@ def orderhistory():
     queryhistory = ordine.find({"Customer" : current_user.Email})
     for order in queryhistory:
         historylist.append(order)
+        print(historylist)
+        print(order)
+        localname=negozio.find_one({"Email": order['Store']})
 
-    return render_template('orderhistory.html', list=historylist)
+    return render_template('orderhistory.html', list=historylist , localname=localname)
