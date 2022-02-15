@@ -7,13 +7,13 @@ The web app was implemented using the following technologies:
 - **Client** side: HTML, CSS, JavaScript
 - **Server** side: Python, MongoDB
 
-## Installazione plugin
+## Plugin to install
 After the folder it's been imported from GitHub , it is necessary to open the terminal and install all the plugin listed in *[Requirements](requirements.txt)*, using the following command:
 ```
 pip install
 ```
 
-## Avvio
+## Execute
 To execute the **Food@Home** it is necessary run the following command in the terminal:
 ```
 python main.py
