@@ -9,15 +9,15 @@ The web app was implemented using the following technologies:
 
 ## Create a virtual environment
 ```
-$ python3 -m venv venv 
-$ . venv/bin/activate
+python3 -m venv venv 
+. venv/bin/activate
 ```
 
 ## Packages to install
 After downloading the project from GitHub, it is necessary to open the terminal and install Flask and the packages listed in *[Requirements](requirements.txt)*, using the following command:
 ```
-$ pip install Flask
-$ pip install -r requirements.txt
+pip install Flask
+pip install -r requirements.txt
 ```
 
 ## Execute
