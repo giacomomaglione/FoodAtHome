@@ -26,7 +26,7 @@
 
         </div>
         <div class="col-6">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                     <div class="mb-3 my-3 form-group">
                         {{ form.hidden_tag() }}
                         {{ form.name.label (class="form-label fw-bold")}}
@@ -95,8 +95,18 @@
                         <br>
                         {{ form.piva (class="form-control", placeholder="Inserisci la tua partita iva", onchange="upperCase()")}}
                     </div>
-                     <div class="mb-3 my-3 form-group">
 
+
+
+                    <div class="mb-3 my-3 form-group">
+                        {{ form.logo.label (class="form-label fw-bold")}}
+                        <br>
+                        {{ form.logo (class="form-control-file")}}
+                    </div>
+
+
+
+                     <div class="mb-3 my-3 form-group">
                         {{ form.email.label (class="form-label fw-bold")}}
                         <br>
                         {{ form.email (class="form-control",  placeholder="nome@dominio.com", pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$" )}}

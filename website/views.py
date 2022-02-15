@@ -6,6 +6,7 @@ from .models import Cliente, Rider, Local
 from . import login
 from flask import session
 from werkzeug.security import generate_password_hash
+import bson
 
 views = Blueprint('views', __name__)
 
@@ -217,20 +218,70 @@ def selectproducts():
     print(session['store'])
 
     if request.method == 'POST':
-        product = request.form.get('product')
+        product_id = request.form.get('product')
         qt = request.form.get('quantity')
-        print(product)
+        print(product_id)
         print(qt)
+
+        if product_id and qt != 0:
+            query = prodotto.find({"_id": bson.ObjectId(product_id)})
+            row = query[0]
+            print(row['Price'])
+            qt = int(qt)
+            row['_id'] = bson.ObjectId(product_id)
+            itemArray = {product_id : {'Name' : row['Name'], 'Quantity' : qt, 'Price' : float(row['Price']), 'Total_price': qt * float(row['Price'])}}
+            print(itemArray)
+
+            all_total_price = 0
+            all_total_quantity = 0
+            session.modified = True
+            if 'cart_item' in session:
+                if  row['_id'] in session['cart_item']:
+                    for key, value in session['cart_item'].items():
+                        if  row['_id'] == key:
+                            #session.modified = True
+                            #if session['cart_item'][key]['quantity'] is not None:
+                            #session['cart_item'][key]['quantity'] = 0
+                            old_quantity = session['cart_item'][key]['Quantity']
+                            total_quantity = old_quantity + qt
+                            session['cart_item'][key]['Quantity'] = total_quantity
+                            session['cart_item'][key]['Total_price'] = total_quantity * float(row['Price'])
+                else:
+                    session['cart_item'] = array_merge(session['cart_item'], itemArray)
+
+                for key, value in session['cart_item'].items():
+                    individual_quantity = int(session['cart_item'][key]['Quantity'])
+                    individual_price = float(session['cart_item'][key]['Total_price'])
+                    all_total_quantity = all_total_quantity + individual_quantity
+                    all_total_price = all_total_price + individual_price
+            else:
+                session['cart_item'] = itemArray
+                all_total_quantity = all_total_quantity + qt
+                all_total_price = all_total_price + qt * float(row['Price'])
+
+        session['all_total_quantity'] = all_total_quantity
+        session['all_total_price'] = all_total_price
+        print(session['all_total_quantity'])
+        print(session['all_total_price'])
+        #return redirect(url_for('selectproducts'))
+    #else:
+        #return 'Error while adding item to cart'
 
     products = []
     queryproducts = prodotto.find({"Store": session['store']})
     for prod in queryproducts:
         products.append(prod)
 
-    all_total_price= 0
-    all_total_quantity =0
-
     return render_template('selectproducts.html', list=products)
+
+def array_merge( first_array , second_array ):
+	if isinstance( first_array , list ) and isinstance( second_array , list ):
+		return first_array + second_array
+	elif isinstance( first_array , dict ) and isinstance( second_array , dict ):
+		return dict( list( first_array.items() ) + list( second_array.items() ) )
+	elif isinstance( first_array , set ) and isinstance( second_array , set ):
+		return first_array.union( second_array )
+	return False
 
 @views.route("/orderhistory", methods=['GET', 'POST'])
 @login_required
