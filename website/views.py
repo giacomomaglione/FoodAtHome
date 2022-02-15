@@ -205,7 +205,7 @@ def selectproducts(store):
     all_total_price= 0
     all_total_quantity =0
     if request.method=='POST':
-        product= prodotto.find_one({"_id" : productid})
+        products= prodotto.find_one({"_id" : productid})
         cartitem= []
         for i in products:
             if product['Price']==products['Price']:
