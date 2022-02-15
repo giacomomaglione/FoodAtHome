@@ -213,7 +213,7 @@ def selectproducts(store):
                 cartitem.append(product['Name'])
                 all_total_quantity=form.quantity.data
                 all_total_price=product['Price']*form.quantity.data+all_total_price
-    return render_template('selectproducts.html', store=store, list=products, form=form, productid=productid)
+    return render_template('selectproducts.html', store=store, list=products, form=form)
 
 @views.route("/orderhistory", methods=['GET', 'POST'])
 @login_required
