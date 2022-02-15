@@ -1,5 +1,6 @@
 let cacheName = 'pwa01';
 let filesToCache = [
+
 ];
 /* Start the service worker and cache all of the app's content */
 self.addEventListener('install', function(e) {
