@@ -10,7 +10,7 @@ The web app was implemented using the following technologies:
 ## Plugin to install
 After the folder it's been imported from GitHub , it is necessary to open the terminal and install all the plugin listed in *[Requirements](requirements.txt)*, using the following command:
 ```
-pip install
+pip install -r requirements.txt
 ```
 
 ## Execute
