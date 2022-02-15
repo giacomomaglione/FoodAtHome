@@ -28,9 +28,15 @@
            {% for product in list %}
             <div class="row centrato">
                 <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">{{ product['Name'] }}</div>
-                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><b>{{ product['Description'] }}</b></div>
+                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12"><b>{{ product['Description'] }}</b></div>
                 <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><b>{{ product['Price'] }}</b></div>
-                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><a href="{{ product['Image'] }}"> <button type="button" class="buttonsearch fw-bold my-3" onclick="">Seleziona</button></a></div>
+                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><img class="anteprima" src="{{product['Image'] }}" alt=""> </img>
+                    <div class="mb-3 my-3 form-group col-xs-12 col-sm-8 col-md-5 col-lg-4">
+                    {{ form.quantity.label(class="form-label fw-bold ptwo")}}
+                    {{ form.quantity(class="form-control", placeholder="Q")}}
+                </div>
+                    <div class="col-md-1 col-lg-1 col-sm-1 col-xs-12">
+                    <button type="button" class="buttonsearch fw-bold my-3" onclick="">Seleziona</button></a></div>
             </div>
             <hr>
             {% endfor %}

@@ -91,3 +91,7 @@ class NewAddress(FlaskForm):
     city=StringField('Città' ,validators=[DataRequired()])
     province=StringField('Provincia' ,validators=[DataRequired()])
     submit = SubmitField('Cerca')
+
+class AddToCart(FlaskForm):
+    quantity=IntegerField('Quantità', validators==[DataRequired()])
+    submit = SubmitField('Aggiungi')
