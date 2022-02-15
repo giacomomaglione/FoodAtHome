@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user, login_user
-from .form import EditProfile, AddProduct, NewAddress
+from .form import EditProfile, AddProduct, NewAddress, AddToCart
 from . import cliente, rider, negozio, prodotto, ordine, prodottiordine
 from .models import Cliente, Rider, Local
 from . import login
@@ -194,7 +194,7 @@ def createorder():
 
 @views.route("/selectproducts$store=<store>/<int:product_id>", methods=['GET'])
 @login_required
-def selectproducts(store):
+def selectproducts(store, productid):
     print(store)
     products = []
     queryproducts = prodotto.find({"Store": store})
@@ -204,14 +204,15 @@ def selectproducts(store):
     form=AddToCart()
     all_total_price= 0
     all_total_quantity =0
-    product= prodotto.find_one("_id": productid)
-    cartitem[]
-    for i in products:
-        if product['Price']==products['Price']:
-            cartitem.append(product['Name'])
-            all_total_quantity=form.quantity.data
-            all_total_price=product['Price']*form.quantity.data+all_total_price
-    return render_template('selectproducts.html', store=store, list=products)
+    if request.method=='POST':
+        product= prodotto.find_one({"_id" : productid})
+        cartitem= []
+        for i in products:
+            if product['Price']==products['Price']:
+                cartitem.append(product['Name'])
+                all_total_quantity=form.quantity.data
+                all_total_price=product['Price']*form.quantity.data+all_total_price
+    return render_template('selectproducts.html', store=store, list=products, form=form, productid=productid)
 
 @views.route("/orderhistory", methods=['GET', 'POST'])
 @login_required
