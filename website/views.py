@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user, login_user
-from .form import EditProfile, AddProduct, NewAddress, AddToCart
+from .form import EditProfile, AddProduct, NewAddress
 from . import cliente, rider, negozio, prodotto, ordine, prodottiordine
 from .models import Cliente, Rider, Local
 from . import login
@@ -144,7 +144,17 @@ def editprofile():
 def riderindex():
     if current_user.type != 1:
         return redirect(url_for('views.index'))
-    return render_template('riderindex.html')
+    queryorder=ordine.find({"Status": "0"})
+    orderlist= []
+    for order in queryorder:
+        orderlist.append(order)
+        local=negozio.find_one({"Email": order['Store']})
+        localstreet=local["Street"]+", "+local["City"]+", "+local["Province"]
+        client=cliente.find_one({"Email": order['Customer']})
+        clientstreet=client["Street"]+", "+client["City"]+", "+client["Province"]
+        print(local["Street"])
+
+    return render_template('riderindex.html', list=orderlist, localstreet=localstreet , clientstreet=clientstreet)
 
 
 @views.route("/localindex", methods=['GET', 'POST'])
@@ -176,7 +186,7 @@ def customerindex():
     if current_user.type != 0:
         return redirect(url_for('views.index'))
     form = NewAddress()
-    if request.method=='POST':
+    if request.method =='POST':
         province = form.province.data
         session['prov'] = province
         return redirect(url_for('views.createorder'))
@@ -185,6 +195,13 @@ def customerindex():
 @views.route("/createorder", methods=['GET', 'POST'])
 @login_required
 def createorder():
+    if current_user.type != 0:
+        return redirect(url_for('views.index'))
+
+    if request.method == 'POST':
+        session['store'] = request.form.get('idlocal')
+        return redirect(url_for('views.selectproducts'))
+
     loc = []
     query = negozio.find({"Province" : session['prov']})
     for local in query:
@@ -193,26 +210,22 @@ def createorder():
     return render_template('createorder.html', list = loc)
 
 
-@views.route("/selectproducts$store=<store>/", methods=['GET'])
+@views.route("/selectproducts", methods=['GET', 'POST'])
 @login_required
-def selectproducts(store):
-    print(store)
+def selectproducts():
+    if current_user.type != 0:
+        return redirect(url_for('views.index'))
+    print(session['store'])
+
     products = []
-    queryproducts = prodotto.find({"Store": store})
+    queryproducts = prodotto.find({"Store": session['store']})
     for prod in queryproducts:
         products.append(prod)
-    form=AddToCart()
+
     all_total_price= 0
     all_total_quantity =0
-    if request.method=='POST':
-        products= prodotto.find_one({"_id" : productid})
-        cartitem= []
-        for i in products:
-            if product['Price']==products['Price']:
-                cartitem.append(product['Name'])
-                all_total_quantity=form.quantity.data
-                all_total_price=product['Price']*form.quantity.data+all_total_price
-    return render_template('selectproducts.html', store=store, list=products, form=form)
+
+    return render_template('selectproducts.html', list=products)
 
 @views.route("/orderhistory", methods=['GET', 'POST'])
 @login_required

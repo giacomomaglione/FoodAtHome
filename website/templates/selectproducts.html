@@ -28,11 +28,6 @@
         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Prezzo</b></div>
         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Immagine</b></div>
     </div>
-    <div class="row centrato">
-        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Nome</div>
-        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Prezzo</div>
-        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Immagine</div>
-    </div>
     <br>
     <div class="row centrato">
         <div class="centrato col-lg-3">
@@ -64,6 +59,7 @@
             <hr>
         </div>
         <div>
+            <Form method="POST">
            {% for product in list %}
             <div class="row centrato">
                 <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12"><b>{{ product['Name'] }}</b></div>
@@ -72,15 +68,17 @@
                 <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><img class="anteprima" src="{{product['Image'] }}" alt=""></div>
                 <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12">
                     <br>
-                    {{ form.quantity(class="form-control", placeholder="Q")}}
-                    <button type="button" class="buttonsearch fw-bold my-3" onclick="">Seleziona</button></a>
+                     <input type="hidden" name="code" value="{{ product['id'] }}"/>
+                    <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
+                   <input type="submit" value="Aggiungi al carrello" class="btnAddAction buttonsearch fw-bold my-3" />
                 </div>
             </div>
             <hr>
         {% endfor %}
+            </Form>
     </div>
 </div>
-
+</div>
 
 
 {% block footer %}
