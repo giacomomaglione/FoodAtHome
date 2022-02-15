@@ -31,10 +31,11 @@
            {% for p in list %}
             <div class="row centrato">
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">{{ p['LocalName'] }}</div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="../static/img/PizzeriaPerfectTaste.jpg" alt="" class="anteprimaLocale"></div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="{{ p['Logo'] }}" alt="" class="anteprimaLocale"></div>
                 <input type="hidden" name="idlocal" value="{{ p['Email'] }}"/>
-
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><a href="{{url_for('views.selectproducts')}}"> <button type="submit" class="buttonsearch fw-bold my-3" onclick="">Seleziona</button></a></div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><a href="{{url_for('views.selectproducts')}}">
+                    <button type="submit" class="buttonsearch fw-bold my-3" onclick="">Seleziona</button></a>
+                </div>
             </div>
             <hr>
             {% endfor %}
