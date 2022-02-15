@@ -295,3 +295,17 @@ def array_merge( first_array , second_array ):
 	elif isinstance( first_array , set ) and isinstance( second_array , set ):
 		return first_array.union( second_array )
 	return False
+
+@views.route("/confirmorder", methods=['GET', 'POST'])
+@login_required
+def confirmorder():
+    flash("Ordine confermato")
+    session.clear()
+    return redirect(url_for('views.customerindex'))
+
+@views.route("/deleteorder", methods=['GET', 'POST'])
+@login_required
+def deleteorder():
+    flash("Ordine annullato")
+    session.clear()
+    return redirect(url_for('views.customerindex'))
