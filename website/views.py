@@ -193,9 +193,9 @@ def createorder():
     return render_template('createorder.html', list = loc)
 
 
-@views.route("/selectproducts$store=<store>/<int:product_id>", methods=['GET'])
+@views.route("/selectproducts$store=<store>/", methods=['GET'])
 @login_required
-def selectproducts(store, productid):
+def selectproducts(store):
     print(store)
     products = []
     queryproducts = prodotto.find({"Store": store})
