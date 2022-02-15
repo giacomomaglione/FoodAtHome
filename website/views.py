@@ -192,7 +192,7 @@ def createorder():
     return render_template('createorder.html', list = loc)
 
 
-@views.route("/selectproducts$store=<store>", methods=['GET'])
+@views.route("/selectproducts$store=<store>/<int:product_id>", methods=['GET'])
 @login_required
 def selectproducts(store):
     print(store)
@@ -200,8 +200,17 @@ def selectproducts(store):
     queryproducts = prodotto.find({"Store": store})
     for prod in queryproducts:
         products.append(prod)
-        print(prod)
-    print(products)
+
+    form=AddToCart()
+    all_total_price= 0
+    all_total_quantity =0
+    product= prodotto.find_one("_id": productid)
+    cartitem[]
+    for i in products:
+        if product['Price']==products['Price']:
+            cartitem.append(product['Name'])
+            all_total_quantity=form.quantity.data
+            all_total_price=product['Price']*form.quantity.data+all_total_price
     return render_template('selectproducts.html', store=store, list=products)
 
 @views.route("/orderhistory", methods=['GET', 'POST'])
@@ -211,5 +220,5 @@ def orderhistory():
     queryhistory = ordine.find({"Customer" : current_user.Email})
     for order in queryhistory:
         historylist.append(order)
-    #print(historylist)
+
     return render_template('orderhistory.html', list=historylist)
