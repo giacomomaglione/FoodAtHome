@@ -1,5 +1,5 @@
 # FoodAtHome
-Food@Home is a web app that manages the services of a food delivery.
+Food@Home is a Progressive Web Application that manages the services of a food delivery.
 The project was realized for the Web Technologies exam at the University of Naples Parthenope.
 
 ## Components
