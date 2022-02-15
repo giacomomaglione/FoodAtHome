@@ -5,6 +5,7 @@ from . import cliente, rider, negozio, prodotto, ordine, prodottiordine
 from .models import Cliente, Rider, Local
 from . import login
 from flask import session
+from werkzeug.security import generate_password_hash
 
 views = Blueprint('views', __name__)
 
@@ -40,7 +41,7 @@ def editprofile():
         telephone = form.telephone.data
         taxcode = form.taxcode.data
         email = form.email.data
-        password = form.password.data
+        password = generate_password_hash(form.password.data, method='sha256')
         id = form.id.data
         iban = form.iban.data
         localname = form.localname.data
