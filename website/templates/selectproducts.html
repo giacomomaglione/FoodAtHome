@@ -68,7 +68,7 @@
                 <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><img class="anteprima" src="{{product['Image'] }}" alt=""></div>
                 <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12">
                     <br>
-                     <input type="hidden" name="product" value="{{ product['Name'] }}"/>
+                     <input type="hidden" name="product" value="{{ product['_id'] }}"/>
                     <input type="text" class="product-quantity" name="quantity" value="0" size="2" />
                    <input type="submit" value="Aggiungi al carrello" class="btnAddAction buttonsearch fw-bold my-3" />
                 </div>
@@ -80,7 +80,19 @@
 </div>
 </div>
 
-
+{% for key, val in session['cart_item'].items() %}
+    {% set quantity = session['cart_item'][key]['Quantity'] %}
+    {% set price = session['cart_item'][key]['Price'] %}
+    {% set item_price = session['cart_item'][key]['Total_price'] %}
+    {% set name = session['cart_item'][key]['Name'] %}
+    <tr>
+        <td style="text-align:right;">Prodotto: {{ name }}</td> <br>
+        <td style="text-align:right;">Quantità: {{ quantity }}</td> <br>
+        <td  style="text-align:right;"> Prezzox{{ quantity }}: {{ price }}</td> <br>
+        <td  style="text-align:right;"> Prezzo singolo: {{ item_price }}</td> <br>
+    </tr>
+    <br>
+{% endfor %}
 {% block footer %}
 {% endblock %}
 {% endblock %}
