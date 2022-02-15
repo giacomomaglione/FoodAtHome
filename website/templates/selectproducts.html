@@ -25,16 +25,32 @@
     </div>
     <div class="row centrato hiddensmall hiddenmedium">
         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Nome</b></div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Quantità</b></div>
         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Prezzo</b></div>
-        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Immagine</b></div>
     </div>
     <br>
+    <div class="container">
+    {% if session['cart_item'] %}
+    {% for key, val in session['cart_item'].items() %}
+        {% set quantity = session['cart_item'][key]['Quantity'] %}
+        {% set price = session['cart_item'][key]['Price'] %}
+        {% set item_price = session['cart_item'][key]['Total_price'] %}
+        {% set name = session['cart_item'][key]['Name'] %}
+    <div class="row centrato">
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Prodotto: {{ name }}</div><br>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Quantità: {{ quantity }}</div><br>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Prezzo x {{ quantity }} = {{ item_price }} €</div><br>
+    </div>
+    <br>
+    {% endfor %}
+    {% endif %}
+</div>
     <div class="row centrato">
         <div class="centrato col-lg-3">
-        <button type="button" class="buttonsearch fw-bold my-3" style="border-color: red; background-color: red" onclick=""><b>Rimuovi tutto</b></button>
+        <button type="button" class="buttonsearch fw-bold my-3" style="border-color: red; background-color: red"><a class="access" href="{{url_for('views.deleteorder')}}">Rimuovi tutto</a></button>
         </div>
         <div class="centrato col-lg-3">
-        <button type="button" class="buttonsearch fw-bold my-3" style="border-color: darkgreen; background-color: darkgreen" onclick=""><b>Conferma</b></button>
+        <button type="button" class="buttonsearch fw-bold my-3" style="border-color: darkgreen; background-color: darkgreen"><a class="access" href="{{url_for('views.confirmorder')}}">Ordina</a></button>
         </div>
     </div>
 <br>
@@ -64,7 +80,7 @@
             <div class="row centrato">
                 <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12"><b>{{ product['Name'] }}</b></div>
                 <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">{{ product['Description'] }}</div>
-                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12">{{ product['Price'] }}</div>
+                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12">€ {{ product['Price'] }}</div>
                 <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><img class="anteprima" src="{{product['Image'] }}" alt=""></div>
                 <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12">
                     <br>
@@ -79,21 +95,8 @@
     </div>
 </div>
 </div>
-    {% if session['cart_item'] %}
-    {% for key, val in session['cart_item'].items() %}
-        {% set quantity = session['cart_item'][key]['Quantity'] %}
-        {% set price = session['cart_item'][key]['Price'] %}
-        {% set item_price = session['cart_item'][key]['Total_price'] %}
-        {% set name = session['cart_item'][key]['Name'] %}
-        <tr>
-            <td style="text-align:right;">Prodotto: {{ name }}</td> <br>
-            <td style="text-align:right;">Quantità: {{ quantity }}</td> <br>
-            <td  style="text-align:right;"> Prezzox{{ quantity }}: {{ price }}</td> <br>
-            <td  style="text-align:right;"> Prezzo singolo: {{ item_price }}</td> <br>
-        </tr>
-        <br>
-    {% endfor %}
-    {% endif %}
+
+
 {% block footer %}
 {% endblock %}
 {% endblock %}
