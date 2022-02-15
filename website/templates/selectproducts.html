@@ -79,20 +79,21 @@
     </div>
 </div>
 </div>
-
-{% for key, val in session['cart_item'].items() %}
-    {% set quantity = session['cart_item'][key]['Quantity'] %}
-    {% set price = session['cart_item'][key]['Price'] %}
-    {% set item_price = session['cart_item'][key]['Total_price'] %}
-    {% set name = session['cart_item'][key]['Name'] %}
-    <tr>
-        <td style="text-align:right;">Prodotto: {{ name }}</td> <br>
-        <td style="text-align:right;">Quantità: {{ quantity }}</td> <br>
-        <td  style="text-align:right;"> Prezzox{{ quantity }}: {{ price }}</td> <br>
-        <td  style="text-align:right;"> Prezzo singolo: {{ item_price }}</td> <br>
-    </tr>
-    <br>
-{% endfor %}
+    {% if session['cart_item'] %}
+    {% for key, val in session['cart_item'].items() %}
+        {% set quantity = session['cart_item'][key]['Quantity'] %}
+        {% set price = session['cart_item'][key]['Price'] %}
+        {% set item_price = session['cart_item'][key]['Total_price'] %}
+        {% set name = session['cart_item'][key]['Name'] %}
+        <tr>
+            <td style="text-align:right;">Prodotto: {{ name }}</td> <br>
+            <td style="text-align:right;">Quantità: {{ quantity }}</td> <br>
+            <td  style="text-align:right;"> Prezzox{{ quantity }}: {{ price }}</td> <br>
+            <td  style="text-align:right;"> Prezzo singolo: {{ item_price }}</td> <br>
+        </tr>
+        <br>
+    {% endfor %}
+    {% endif %}
 {% block footer %}
 {% endblock %}
 {% endblock %}
