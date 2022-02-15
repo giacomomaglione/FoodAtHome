@@ -59,8 +59,8 @@
             <hr>
         </div>
         <div>
-            <Form method="POST">
            {% for product in list %}
+            <Form method="POST", action="/selectproducts">
             <div class="row centrato">
                 <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12"><b>{{ product['Name'] }}</b></div>
                 <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">{{ product['Description'] }}</div>
@@ -68,14 +68,14 @@
                 <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12"><img class="anteprima" src="{{product['Image'] }}" alt=""></div>
                 <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12">
                     <br>
-                     <input type="hidden" name="code" value="{{ product['id'] }}"/>
-                    <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
+                     <input type="hidden" name="product" value="{{ product['Name'] }}"/>
+                    <input type="text" class="product-quantity" name="quantity" value="0" size="2" />
                    <input type="submit" value="Aggiungi al carrello" class="btnAddAction buttonsearch fw-bold my-3" />
                 </div>
             </div>
             <hr>
-        {% endfor %}
             </Form>
+        {% endfor %}
     </div>
 </div>
 </div>
