@@ -14,7 +14,7 @@ python3 -m venv venv
 ```
 
 ## Packages to install
-After downloading the project from GitHub, it is necessary to open the terminal and install Flask and the packages listed in *[Requirements](requirements.txt)*, using the following command:
+Inside the virtual environment folder, it is necessary to install Flask and the packages listed in *[Requirements](requirements.txt)*, using the following command:
 ```
 pip install Flask
 pip install -r requirements.txt
