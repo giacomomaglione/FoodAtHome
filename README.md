@@ -4,7 +4,7 @@ The project was realized for the Web Technologies exam at the University of Napl
 
 ## Components
 The web app was implemented using the following technologies: 
-- **Client** side: HTML, CSS, JavaScript
+- **Client** side: HTML, CSS, JavaScript, Bootstrap
 - **Server** side: Python, Flask, MongoDB
 
 ## Create a virtual environment
