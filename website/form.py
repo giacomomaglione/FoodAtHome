@@ -93,5 +93,5 @@ class NewAddress(FlaskForm):
     submit = SubmitField('Cerca')
 
 class AddToCart(FlaskForm):
-    quantity=IntegerField('Quantità', validators==[DataRequired()])
+    quantity=IntegerField('Quantità', validators=[DataRequired()])
     submit = SubmitField('Aggiungi')
