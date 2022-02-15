@@ -156,22 +156,18 @@ function viewInsertProduct() {
 
 
 <!--Controlli Rider-->
-function viewShiftPage(){
-    var div_shi = document.getElementById("ShiftPage");
-    var div_ord = document.getElementById("OrderPage");
-    if (div_shi.style.display === "none") {
-        div_shi.style.display = "block";
-        div_ord.style.display = "none";
-    } else {
-        div_shi.style.display = "none";
-    }
-}
 function viewOrderPage(){
-    var div_shi = document.getElementById("ShiftPage");
     var div_ord = document.getElementById("OrderPage");
     if (div_ord.style.display === "none") {
         div_ord.style.display = "block";
-        div_shi.style.display = "none";
+    } else {
+        div_ord.style.display = "none";
+    }
+}
+function viewOrderSpec(){
+    var div_ord = document.getElementById("OrderSpec");
+    if (div_ord.style.display === "none") {
+        div_ord.style.display = "block";
     } else {
         div_ord.style.display = "none";
     }
