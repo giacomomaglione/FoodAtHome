@@ -3,6 +3,7 @@ from flask import render_template, url_for, request, flash
 from flask_login import current_user, login_user, logout_user, login_required, UserMixin
 from .form import Login, ClientSigninForm, RiderSigninForm, LocalSigninForm
 from werkzeug.urls import url_parse
+from werkzeug.security import generate_password_hash,check_password_hash
 from . import cliente, rider, negozio
 from .models import Cliente, Rider, Local  # NON LO CANCELLARE; Missing user_loader or request_loader
 from . import login
@@ -40,7 +41,7 @@ def login():
     if form.validate_on_submit():
         user = cliente.find_one({"Email": formemail})
         if user:
-            if user["Password"] == formpassword:
+            if check_password_hash(user["Password"], formpassword):
                 flash("Accesso Eseguito")
                 user_obj = Cliente(Email=user['Email'], type=0)
                 login_user(user_obj, True)
@@ -53,7 +54,7 @@ def login():
         if not user:
             user = rider.find_one({"Email": formemail})
             if user:
-                if user["Password"] == formpassword:
+                if check_password_hash(user["Password"], formpassword):
                     flash("Accesso Eseguito")
                     user_obj = Rider(Email=user['Email'], type=1)
                     login_user(user_obj, True)
@@ -66,7 +67,7 @@ def login():
         if not user:
             user = negozio.find_one({"Email": formemail})
             if user:
-                if user["Password"] == formpassword:
+                if check_password_hash(user["Password"], formpassword):
                     flash("Accesso Eseguito")
                     user_obj = Local(Email=user['Email'], type=2)
                     login_user(user_obj, True)
@@ -108,7 +109,7 @@ def signin():
         telephone = form.telephone.data
         taxcode = form.taxcode.data
         email = form.email.data
-        password = form.password.data
+        password = generate_password_hash(form.password.data, method='sha256')
 
         user = cliente.find_one({"Email": form.email.data})
 
@@ -151,7 +152,7 @@ def signinrider():
         telephone = form.telephone.data
         taxcode = form.taxcode.data
         email = form.email.data
-        password = form.password.data
+        password = generate_password_hash(form.password.data, method='sha256')
         id = form.id.data
         iban = form.iban.data
 
@@ -195,7 +196,7 @@ def signinlocal():
         telephone = form.telephone.data
         taxcode = form.taxcode.data
         email = form.email.data
-        password = form.password.data
+        password = generate_password_hash(form.password.data, method='sha256')
         id = form.id.data
         iban = form.iban.data
         localname = form.localname.data
