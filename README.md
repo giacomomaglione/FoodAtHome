@@ -1,20 +1,20 @@
 # FoodAtHome
-Food@Home è una web app che gestisce i servizi di un food delivery.
-Il progetto è stato realizzato per l'esame di Tecnologie Web presso l'Università degli Studi di Napoli Parthenope.
+Food@Home is a web app that manages the services of a food delivery.
+The project was realized for the Web Technologies exam at the University of Naples Parthenope.
 
-## Componenti utilizzati
-La web app è stata implementata utlizzando le seguenti tecnologie : 
-- Lato **client**: HTML, CSS, JavaScript
-- Lato **server**: Python, MongoDB
+## Components
+The web app was implemented using the following technologies: 
+- **Client** side: HTML, CSS, JavaScript
+- **Server** side: Python, MongoDB
 
-## Installazione plugin
-Dopo aver importato la cartella da GitHub è necessario aprire il terminale ed installare i plugin elencati in *[Requirements](requirements.txt)* utlizzando il seguente comando:
+## Plugin to install
+After the folder it's been imported from GitHub , it is necessary to open the terminal and install all the plugin listed in *[Requirements](requirements.txt)*, using the following command:
 ```
 pip install
 ```
 
-## Avvio
-Per avviare **Food@Home** è necessario eseguire nel terminale il seguente comando :
+## Execute
+To execute the **Food@Home** it is necessary run the following command in the terminal:
 ```
 python main.py
 ```
