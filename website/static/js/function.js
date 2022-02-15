@@ -121,6 +121,15 @@ function viewNewOrder() {
         div_new.style.display = "none";
     }
 }
+function viewCart() {
+    var div_new = document.getElementById("Cart");
+    if (div_new.style.display === "none") {
+        div_new.style.display = "block";
+    } else {
+        div_new.style.display = "none";
+    }
+}
+
 
 <!--Controlli Locale-->
 function viewMenuList() {
