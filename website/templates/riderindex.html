@@ -33,9 +33,11 @@
     <hr>
     <br>
     <div class="row centrato">
+        {% for order in list %}
         <br>
-        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Via Roma,22 Casoria - Napoli</div>
-        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">Via Garibaldi, 99 Afragola - Napoli</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">{{localstreet}}</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">{{clientstreet}}</div>
+        <input type="hidden" name="code" value="{{ order['id'] }}"/>
         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><button type="button" class="buttonsearch fw-bold my-3" onclick="viewOrderSpec()">Visualizza</button></div>
         <br><br>
         <div id="OrderSpec">
@@ -58,6 +60,7 @@
         </div>
         <hr>
     </div>
+    {%endfor%}
 </div>
 {% block footer %}
 {% endblock %}
