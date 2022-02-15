@@ -16,7 +16,7 @@ python3 -m venv venv
 ## Packages to install
 Inside the virtual environment folder, it is necessary to install Flask and the packages listed in *[Requirements](requirements.txt)*, using the following command:
 ```
-pip install Flask
+pip install flask
 pip install -r requirements.txt
 ```
 
