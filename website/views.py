@@ -274,15 +274,6 @@ def selectproducts():
 
     return render_template('selectproducts.html', list=products)
 
-def array_merge( first_array , second_array ):
-	if isinstance( first_array , list ) and isinstance( second_array , list ):
-		return first_array + second_array
-	elif isinstance( first_array , dict ) and isinstance( second_array , dict ):
-		return dict( list( first_array.items() ) + list( second_array.items() ) )
-	elif isinstance( first_array , set ) and isinstance( second_array , set ):
-		return first_array.union( second_array )
-	return False
-
 @views.route("/orderhistory", methods=['GET', 'POST'])
 @login_required
 def orderhistory():
@@ -295,3 +286,12 @@ def orderhistory():
         localname=negozio.find_one({"Email": order['Store']})
 
     return render_template('orderhistory.html', list=historylist , localname=localname)
+
+def array_merge( first_array , second_array ):
+	if isinstance( first_array , list ) and isinstance( second_array , list ):
+		return first_array + second_array
+	elif isinstance( first_array , dict ) and isinstance( second_array , dict ):
+		return dict( list( first_array.items() ) + list( second_array.items() ) )
+	elif isinstance( first_array , set ) and isinstance( second_array , set ):
+		return first_array.union( second_array )
+	return False
