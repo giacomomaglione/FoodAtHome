@@ -2,6 +2,7 @@ from flask import Blueprint
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, RadioField, DateField, IntegerField
 from wtforms.validators import DataRequired, InputRequired
+from flask_wtf.file import FileField, FileRequired, FileAllowed
 
 form = Blueprint('form', __name__)
 
@@ -47,17 +48,18 @@ class LocalSigninForm(FlaskForm):
     name = StringField('Nome', validators=[DataRequired()])
     surname = StringField('Cognome', validators=[DataRequired()])
     street = StringField('Via' , validators=[DataRequired()])
-    city = StringField('Città',validators=[DataRequired()])
-    province = StringField('Provincia',validators=[DataRequired()])
-    date = StringField('Data di nascita',validators=[DataRequired()])
+    city = StringField('Città', validators=[DataRequired()])
+    province = StringField('Provincia', validators=[DataRequired()])
+    date = StringField('Data di nascita', validators=[DataRequired()])
     gender = RadioField('Genere', choices=[('M'),('F')], validators=[DataRequired()])
-    telephone = StringField('Numero di telefono',validators=[DataRequired()])
-    taxcode = StringField('Codice fiscale',validators=[DataRequired()])
-    submit = SubmitField('Registrati',validators=[DataRequired()])
-    id = StringField('Numero carta identità',validators=[DataRequired()])
-    iban = StringField('Iban',validators=[DataRequired()])
-    localname = StringField('Nome del locale',validators=[DataRequired()])
-    piva = StringField('Piva',validators=[DataRequired()])
+    telephone = StringField('Numero di telefono', validators=[DataRequired()])
+    taxcode = StringField('Codice fiscale', validators=[DataRequired()])
+    submit = SubmitField('Registrati', validators=[DataRequired()])
+    id = StringField('Numero carta identità', validators=[DataRequired()])
+    iban = StringField('Iban', validators=[DataRequired()])
+    localname = StringField('Nome del locale', validators=[DataRequired()])
+    piva = StringField('Piva', validators=[DataRequired()])
+    logo = FileField('Logo', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Solo immagini!')])
 
 
 class EditProfile(FlaskForm):
