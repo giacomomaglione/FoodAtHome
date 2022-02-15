@@ -144,7 +144,17 @@ def editprofile():
 def riderindex():
     if current_user.type != 1:
         return redirect(url_for('views.index'))
-    return render_template('riderindex.html')
+    queryorder=ordine.find({"Status": "0"})
+    orderlist= []
+    for order in queryorder:
+        orderlist.append(order)
+        local=negozio.find_one({"Email": order['Store']})
+        localstreet=local["Street"]+", "+local["City"]+", "+local["Province"]
+        client=cliente.find_one({"Email": order['Customer']})
+        clientstreet=client["Street"]+", "+client["City"]+", "+client["Province"]
+        print(local["Street"])
+
+    return render_template('riderindex.html', list=orderlist, localstreet=localstreet , clientstreet=clientstreet)
 
 
 @views.route("/localindex", methods=['GET', 'POST'])
