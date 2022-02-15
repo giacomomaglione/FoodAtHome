@@ -206,9 +206,8 @@ def createorder():
     query = negozio.find({"Province" : session['prov']})
     for local in query:
         loc.append(local)
-    #print(loc)
-    return render_template('createorder.html', list = loc)
 
+    return render_template('createorder.html', list = loc)
 
 @views.route("/selectproducts", methods=['GET', 'POST'])
 @login_required
@@ -216,6 +215,12 @@ def selectproducts():
     if current_user.type != 0:
         return redirect(url_for('views.index'))
     print(session['store'])
+
+    if request.method == 'POST':
+        product = request.form.get('product')
+        qt = request.form.get('quantity')
+        print(product)
+        print(qt)
 
     products = []
     queryproducts = prodotto.find({"Store": session['store']})
