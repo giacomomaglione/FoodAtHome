@@ -15,7 +15,7 @@
                 <div class="centrato buttonsearch fw-bold my-3" style="font-size: 200%"><b>Locali disponibili</b></div>
             </div>
             <br>
-            <div class="row centrato">
+            <div class="row centrato hiddensmall">
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Nome locale</b></div>
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><b>Immagine</b></div>
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"></div>
@@ -27,16 +27,14 @@
             <div class="row centrato">
 
             </div>
-            <form method="post">
            {% for p in list %}
             <div class="row centrato">
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">{{ p['LocalName'] }}</div>
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="" alt="" class="anteprima"></div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><img src="../static/img/PizzeriaPerfectTaste.jpg" alt="" class="anteprimaLocale"></div>
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"><a href="{{url_for('views.selectproducts',store=p['Email'])}}"> <button type="button" class="buttonsearch fw-bold my-3" onclick="">Seleziona</button></a></div>
             </div>
             <hr>
             {% endfor %}
-            </form>
         </div>
     </div>
 </div>
