@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user, login_user
-from .form import EditProfile, AddProduct, NewAddress, AddToCart
+from .form import EditProfile, AddProduct, NewAddress
 from . import cliente, rider, negozio, prodotto, ordine, prodottiordine
 from .models import Cliente, Rider, Local
 from . import login
@@ -221,11 +221,11 @@ def selectproducts():
     queryproducts = prodotto.find({"Store": session['store']})
     for prod in queryproducts:
         products.append(prod)
-    form = AddToCart()
+
     all_total_price= 0
     all_total_quantity =0
 
-    return render_template('selectproducts.html', list=products, form=form)
+    return render_template('selectproducts.html', list=products)
 
 @views.route("/orderhistory", methods=['GET', 'POST'])
 @login_required
